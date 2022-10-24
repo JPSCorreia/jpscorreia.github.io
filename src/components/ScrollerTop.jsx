@@ -2,8 +2,12 @@ import React from 'react'
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { HashLink } from 'react-router-hash-link';
 import MovingText from 'react-moving-text';
+import { useMediaQuery } from 'react-responsive';
 
 const ScrollerTop = (props) => {
+
+  const smallMobile = useMediaQuery({ query: '(max-width: 360px)' });
+
   return (
     <div
       className="flex flex-col items-center justify-center bg-transparent cursor-pointer  hover:text-[#67E8F9] scroller-top mt-4"
@@ -27,12 +31,14 @@ const ScrollerTop = (props) => {
         >
           scroll to top
           <div className=" hover:text-[#67E8F9] hover:scale-110 mb-4 p-2">
-            <HiOutlineChevronDoubleUp size={32} />
+            <HiOutlineChevronDoubleUp size={smallMobile? "16" : "32"} />
           </div>
         </MovingText>
       </HashLink>
     </div>
   );
 }
+
+
 
 export default ScrollerTop

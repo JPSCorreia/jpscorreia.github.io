@@ -12,13 +12,14 @@ const Main = () => {
   return (
     <div
       id="home"
-      className="w-[90%] max-w-screen m-auto h-screen text-center flex home-page flex-col"
+      className="w-[90%] max-w-screen m-auto h-[95vh] lg:h-screen text-center flex home-page flex-col"
     >
       <div className="max-w-[1240px] w-full h-full mx-auto flex flex-col justify-center items-center text-zone">
-        <div className="flex flex-col main h-[100%] home-intro mt-24 sm:mt-36 justify-center">
+        <div id="home-container-1" className="flex flex-col main h-[100%] home-intro mt-24 sm:mt-36 justify-center">
           <div className="flex flex-col">
             <div
               className="text-start text-[#67E8F9] text-lg md:text-2xl whitespace-nowrap space-mono mb-4"
+              id="home-text-1"
               data-aos="fade-up"
               data-aos-anchor="#home"
               data-aos-duration="500"
@@ -28,6 +29,7 @@ const Main = () => {
             </div>
             <div
               className=" text-5xl lg:text-6xl tracking-wider home-text mt-3 text-start text-[#ffffff]"
+              id="home-text-2"
               data-aos="fade-in"
               data-aos-anchor="#home"
               data-aos-duration="600"
@@ -38,6 +40,7 @@ const Main = () => {
             </div>
             <h1
               className="mt-2 text-start text-5xl lg:text-6xl whitespace-nowrap home-text tracking-wider"
+              id="home-text-3"
               data-aos="fade-in"
               data-aos-anchor="#home"
               data-aos-duration="600"
@@ -53,13 +56,13 @@ const Main = () => {
             data-aos-duration="500"
             data-aos-delay="200"
           >
-            <div className="py-2 text-start flex flex-col md:flex-row text-[#67E8F9] mt-4">
+            <div id="home-text-5" className="py-2 text-start flex flex-col md:flex-row text-[#67E8F9] mt-4">
               <div className="flex flex-col">
-                <span className="flex items-center whitespace-nowrap leading-loose tracking-wide text-lg md:text-2xl space-mono ">
+                <span id="home-text-4" className="flex items-center whitespace-nowrap leading-loose tracking-wide text-lg md:text-2xl space-mono ">
                   Full Stack Developer
                   {/* <span className="hidden md:inline ml-3 text-gray-200">-</span> */}
                 </span>
-                <div className="flex flex-col md:flex-row mt-3">
+                <div className="flex flex-col md:flex-row mt-3 home-skills-container">
                   <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
                     <SiReact className="mr-3" color="#61dafb" size={32} />
                     React.js

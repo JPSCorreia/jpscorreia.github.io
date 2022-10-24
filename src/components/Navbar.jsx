@@ -102,11 +102,11 @@ function Navbar() {
           >
             <div>
               <div className="">
-                <ul className="flex flex-col uppercase justify-center align-center mt-6 mr-2">
+                <ul className="flex flex-col uppercase justify-center align-center mt-6 mr-2 sidebar-navbar">
                   <HashLink to="/#home">
                     <li
                       onClick={handleNav}
-                      className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100"
+                      className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
                     >
                       <div className="flex flex-col flex-center">
                         <FaHome className="flex-center m-auto" size={32} />
@@ -119,7 +119,7 @@ function Navbar() {
                   <HashLink to="/#about">
                     <li
                       onClick={handleNav}
-                      className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 "
+                      className="w-[100%] hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
                     >
                       <div className="flex flex-col flex-center">
                         <FaUserCircle
@@ -135,7 +135,7 @@ function Navbar() {
                   <HashLink to="/#skills">
                     <li
                       onClick={handleNav}
-                      className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100"
+                      className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button" 
                     >
                       <div className="flex flex-col flex-center">
                         <FaGraduationCap
@@ -151,7 +151,7 @@ function Navbar() {
                   <HashLink to="/#projects">
                     <li
                       onClick={handleNav}
-                      className="w-[100%] hover:shadow-custom ml-[2px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100"
+                      className="w-[100%] hover:shadow-custom ml-[2px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
                     >
                       <div className="flex flex-col flex-center">
                         <FaEye className="flex-center m-auto" size={32} />
@@ -164,7 +164,7 @@ function Navbar() {
                   <HashLink to="/#contact">
                     <li
                       onClick={handleNav}
-                      className="w-[100%] hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100"
+                      className="w-[100%] hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
                     >
                       <div className="flex flex-col flex-center">
                         <GrMail className="flex-center m-auto" size={32} />

@@ -15,6 +15,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import ScrollerTop from './ScrollerTop';
+import { useMediaQuery } from 'react-responsive';
 
 const Contact = () => {
   const toast = useToast();
@@ -26,6 +27,8 @@ const Contact = () => {
     : 'w-full shadow-custom2 shadow-[#67E8F9] p-3 justify-center flex flex-col mx-auto';
   const styleUnfocused =
     'w-full shadow-custom2 shadow-[#ffffff] p-3 justify-center flex flex-col mx-auto';
+
+  const smallMobile = useMediaQuery({ query: '(max-width: 360px)' });
 
   const formik = useFormik({
     initialValues: {
@@ -81,8 +84,8 @@ const Contact = () => {
             leftIcon={<CheckIcon />}
             color="#60f073"
             variant="none"
-            className="flex cursor-default flex-center text-xl text-center m-auto ease-in duration-100 "
-            size="lg"
+            className="flex cursor-default flex-center text-xl text-center m-auto ease-in duration-100 send-message-button"
+            size={smallMobile? "xs" : "lg"}
           >
             Submitted
           </Button>
@@ -93,10 +96,10 @@ const Contact = () => {
             leftIcon={<EmailIcon />}
             color="#E5E7EB"
             variant="outline"
-            className="flex flex-center text-xl text-center m-auto hover:text-[#67E8F9] ease-in duration-100 "
+            className="flex flex-center text-xl text-center m-auto hover:text-[#67E8F9] ease-in duration-100 send-message-button"
             loadingText="Sending"
             onClick={formik.handleSubmit}
-            size="lg"
+            size={smallMobile? "xs" : "lg"}
           >
             Send Message
           </Button>
@@ -107,10 +110,10 @@ const Contact = () => {
             leftIcon={<EmailIcon />}
             color="#E5E7EB"
             variant="outline"
-            className="flex flex-center cursor-default text-xl text-center m-auto ease-in duration-100 "
+            className="flex flex-center cursor-default text-xl text-center m-auto ease-in duration-100 send-message-button"
             isLoading
             loadingText="Sending"
-            size="lg"
+            size={smallMobile? "xs" : "lg"}
           >
             Send Message
           </Button>
@@ -121,9 +124,9 @@ const Contact = () => {
             leftIcon={<WarningIcon />}
             color="red.300"
             variant="outline"
-            className="flex flex-center text-xl text-center m-auto ease-in duration-100 "
+            className="flex flex-center text-xl text-center m-auto ease-in duration-100 send-message-button"
             onClick={formik.handleSubmit}
-            size="lg"
+            size={smallMobile? "xs" : "lg"}
           >
             Error: Send Again
           </Button>
@@ -197,7 +200,7 @@ const Contact = () => {
                           </div>
                         </FormLabel>
                         <Input
-                          className=""
+                          className="contact-zone"
                           isDisabled={finish}
                           onFocus={(e) => {
                             setFocused(true);
@@ -236,7 +239,7 @@ const Contact = () => {
                           </div>
                         </FormLabel>
                         <Input
-                          className=""
+                          className="contact-zone"
                           isDisabled={finish}
                           onFocus={(e) => {
                             setFocused(true);
@@ -277,7 +280,7 @@ const Contact = () => {
                         </div>
                       </FormLabel>
                       <Input
-                        className=""
+                        className="contact-zone"
                         isDisabled={finish}
                         onFocus={(e) => {
                           setFocused(true);
@@ -357,8 +360,8 @@ const Contact = () => {
                         onFocus={(e) => {
                           setFocused(true);
                         }}
-                        className=""
-                        rows="6"
+                        className="contact-zone"
+                        rows={smallMobile? "2" : "6"}
                         name="message"
                         variant="flushed"
                         id="message_input"

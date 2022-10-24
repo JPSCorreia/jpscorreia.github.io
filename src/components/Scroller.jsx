@@ -2,12 +2,16 @@ import React from 'react'
 import { HiChevronDown } from 'react-icons/hi';
 import { HashLink } from 'react-router-hash-link';
 import MovingText from 'react-moving-text';
+import { useMediaQuery } from 'react-responsive';
 
 const Scroller = (props) => {
+
+  const smallMobile = useMediaQuery({ query: '(max-width: 360px)' });
+
   return (
     <div
       id={props.scrollerID}
-      className="flex flex-col items-center justify-center bg-transparent cursor-pointer hover:text-[#67E8F9] mt-2 z-500"
+      className="flex flex-col items-center justify-center bg-transparent cursor-pointer hover:text-[#67E8F9] mt-2 z-500 scroller-normal"
       data-aos={props.AOSAnimation}
       data-aos-anchor={props.AOSAnchor}
       data-aos-offset={props.AOSOffset}
@@ -28,7 +32,7 @@ const Scroller = (props) => {
         >
           {props.text}
           <div className=" hover:text-[#67E8F9] hover:scale-110 mb-4">
-            <HiChevronDown size={48} />
+            <HiChevronDown size={smallMobile? "24" : "48"} />
           </div>
         </MovingText>
       </HashLink>

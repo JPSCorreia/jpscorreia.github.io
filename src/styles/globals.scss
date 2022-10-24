@@ -6,7 +6,6 @@
   body {
     @apply text-[#E5E7EB] tracking-wide;
     foo: bar;
-    teste:teste2;
   }
 
   html {
@@ -44,6 +43,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  height: 100%;
   // margin-left: calc(100vw - 100%);
 }
 
@@ -270,8 +270,206 @@ textarea:focus::placeholder {
   display: none;
 }
 
+// Moto G4
+@media (max-width: 600px) and (max-height: 600px) {
+
+  .rotating-globe {
+    display: none !important;
+  }
+
+
+  .sidebar-button {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .sidebar-navbar {
+    margin-top: 0;
+  }
+
+  #home-container-1 {
+    margin-top: 0rem;
+  }
+
+  .home-text {
+    font-size: 2rem;
+  }
+
+  #home-text-1 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  #home-text-2 {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  #home-text-3 {
+    font-size: 2rem;
+  }
+
+  #home-text-4 {
+    font-size: 1rem;
+  }
+
+  #home-text-5 {
+    margin-top: 0;
+  }
+
+  .home-skills-container {
+    margin-top: 2rem;
+  }
+
+  .animated-image {
+    display: none;
+  }
+
+
+  .about-container-1 {
+    margin-top: 0.75rem;
+    
+  }
+
+  .about-text-1 {
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+  }
+
+  .about-text-2 {
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+  }
+
+  .skill-icons-container {
+    font-size: 0.9rem !important;
+  }
+
+  .skills-text {
+    font-size: 0.9rem !important;
+    margin-top: 2.5rem !important;
+  }
+
+  .skills-top-text-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  #skills-container {
+    margin-top: 5rem;
+  }
+
+  #projects-container {
+    justify-content: center;
+    margin-top:4rem;
+  }
+
+  .project-item-container {
+    padding: 1.25rem;
+    // padding-left: 2rem;
+    // padding-right: 2rem;
+  }
+
+  .project-item {
+    max-width: 220px;
+  }
+
+  .projects-top-text-2 {
+    margin-bottom: 0;
+  }
+
+  .projects-bottom-container {
+    grid-gap: 1.5rem !important;
+    margin-top: 0.5rem;
+  }
+
+  #project-sidescroll {
+    display: none;
+  }
+
+  .contact-zone {
+    font-size: 0.65rem !important;
+  }
+
+  .how-to-contact {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .chakra-form__error-message {
+    display: none !important;
+  }
+
+  .send-message-button {
+    font-size: 0.5rem;
+  }
+
+  .contact-message {
+    display: none;
+  }
+
+  .contact-name {
+    display: none;
+  }
+
+  .contact-email {
+    display: none;
+  }
+
+  .contact-phone {
+    display: none;
+  }
+
+  .send-button {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #contact-complete-form {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .chakra-form-control {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .chakra-form__label {
+    padding-top: 0rem !important;
+  }
+
+  .name-phone-grid {
+    grid-gap: 0;
+  }
+
+  #contact-form {
+    margin-top: 1rem;
+  }
+
+
+
+  .footer-text {
+    display: none;
+  }
+
+  #footer {
+    justify-content: center;
+  }
+
+  .last-footer-icon {
+    padding-right: 0.5rem;
+  }
+
+  .scroller-top, .scroller-normal {
+    font-size: 0.75rem;
+  }
+
+}
+
 // Galaxy Fold
-@media (min-width:270px) and (max-width:350px) and (min-height: 643px) and (max-height: 663px) {
+@media  (max-width:350px) and (max-height: 663px) {
 
   .home-text {
     font-size: 2rem;
@@ -289,6 +487,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 36vh !important;
+    display: none;
   }
 
   .skill-icons-container {
@@ -414,6 +613,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 36vh !important;
+    display: none;
   }
 
   #projects-container {
@@ -502,6 +702,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 36vh !important;
+    // display: none;
   }
 
   .skills-text {
@@ -583,6 +784,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 37vh !important;
+    // display: none;
   }
 
   .skills-text {
@@ -661,6 +863,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 35vh !important;
+    display: none;
   }
 
   .skills-text {
@@ -706,6 +909,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 35vh !important;
+    display: none;
   }
 
   .skills-text {
@@ -766,6 +970,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 34vh !important;
+    // display: none;
   }
 
   .skills-text {
@@ -1217,6 +1422,7 @@ textarea:focus::placeholder {
     width: 100vw;
     height: 50vh !important;
     margin-top: 2rem;
+    
   }
 
   .main-with-globe {
