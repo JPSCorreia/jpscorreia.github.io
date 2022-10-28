@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-// import contact from '../assets/contact.jpg'
 import { contactSchema } from '../validations/ContactValidation';
 import { useFormik } from 'formik';
 import { EmailIcon, CheckIcon, WarningIcon } from '@chakra-ui/icons';
@@ -140,7 +139,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="w-[90%] m-auto items-center h-screen flex flex-col" // pt-4 mt-32 mb-16 lg:mb-16 xl:mb-16
+      className="w-[90%] m-auto items-center h-[90vh] lg:h-screen flex flex-col" // pt-4 mt-32 mb-16 lg:mb-16 xl:mb-16
     >
       <div
         className="max-w-[1240px] w-full h-full mx-auto flex flex-col mt-20 md:justify-center" //md:py-16
@@ -152,26 +151,17 @@ const Contact = () => {
         <p
           id="contact-start"
           className="text-xl tracking-widest uppercase text-[#67E8F9] header-text-top text-end"
-          // data-aos="fade-left"
-          // data-aos-anchor="#contact"
-          // data-aos-duration="400"
         >
           Contact
         </p>
         <h2
           className="mt-1 text-gray-200 text-end tracking-wide text-2xl md:text-3xl space-mono font-normal mb-4 how-to-contact"
-          // data-aos="fade-left"
-          // data-aos-anchor="#contact"
-          // data-aos-duration="400"
         >
           How To Get in Touch
         </h2>
         <div
           className="md:mt-8"
           id="contact-form"
-          // data-aos="fade-left"
-          // data-aos-anchor="#contact"
-          // data-aos-duration="400"
         >
           <div
             className={finish || focused ? styleFocused : styleUnfocused}
@@ -302,43 +292,6 @@ const Contact = () => {
                         // {...formik.getFieldProps('user_email')}
                       />
                     </FormControl>
-
-                    {/* <FormControl
-                      isInvalid={
-                        formik.errors.user_subject &&
-                        formik.touched.user_subject
-                      }
-                      className="flex flex-col py-4"
-                    >
-                      <FormLabel className="uppercase text-sm pt-4 font-light">
-                        <Text className="uppercase text-sm font-normal leading-3">
-                          Subject
-                        </Text>
-                      </FormLabel>
-                      <Input
-                        className=""
-                        isDisabled={finish}
-                        onFocus={(e) => {
-                          setFocused(true);
-                        }}
-                        type="text"
-                        name="user_subject"
-                        id="subject_input"
-                        errorBorderColor="red"
-                        variant="flushed"
-                        focusBorderColor="#67E8F9"
-                        placeholder="Subject"
-                        _placeholder={{ color: 'gray.100', opacity: 0.3 }}
-                        onChange={formik.handleChange}
-                        onBlur={(e) => {
-                          formik.handleBlur(e);
-                          setFocused(false);
-                        }}
-                        value={formik.values.user_subject}
-                        // {...formik.getFieldProps('user_subject')}
-                      />
-                    </FormControl> */}
-
                     <FormControl
                       isInvalid={
                         formik.errors.message && formik.touched.message

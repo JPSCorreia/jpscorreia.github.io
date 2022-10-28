@@ -11,13 +11,10 @@ const Home = () => {
 
     useEffect(() => {
     AOS.init({
-      // delay: 100,
       easing: 'ease-in',
       duration: 0,
       mirror: true,
-      // once: true,
     });
-    // AOS.refresh();
   }, []);
 
   return (

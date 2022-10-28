@@ -3,7 +3,7 @@ import ProjectItem from './ProjectItem'
 import tldreddit from '../assets/projects/TLDReddit-logo3.png'
 import emporium from '../assets/projects/emporium-logo4.png'
 import github from '../assets/projects/github-projects-logo.png';
-import { NavLink } from 'react-router-dom';
+
 import Scroller from './Scroller';
 
 const Projects = () => {
@@ -11,7 +11,7 @@ const Projects = () => {
   return (
     <div
       id="projects"
-      className="w-[90%] m-auto h-screen items-center flex flex-col"
+      className="w-[90%] m-auto h-[90vh] lg:h-screen items-center flex flex-col"
     >
       <div
         className="max-w-[1240px] w-full h-full mx-auto flex flex-col items-center md:justify-center"
@@ -40,34 +40,30 @@ const Projects = () => {
             data-aos-anchor="#projects"
             data-aos-duration="400"
           >
-            <NavLink to={'/emporium'}>
               <ProjectItem
                 title="Emporium"
                 projectType="Full Stack Project"
+                navlink="/emporium"
+                isNavlink={true}
                 backgroundImg={emporium}
                 projectUrl="emporium"
               />
-            </NavLink>
-            <NavLink to={'/tldreddit'}>
               <ProjectItem
                 title="TLDReddit"
                 projectType="React Project"
+                navlink="/tldreddit"
+                isNavlink={true}
                 backgroundImg={tldreddit}
                 projectUrl="tldreddit"
               />
-            </NavLink>
-            <a
-              href="https://github.com/JPSCorreia"
-              target="_blank"
-              rel="noreferrer"
-            >
               <ProjectItem
                 title="GitHub Projects"
                 projectType="GitHub Projects"
+                isNavlink={false}
+                navlink="https://github.com/JPSCorreia"
                 backgroundImg={github}
                 projectUrl="github"
               />
-            </a>
           </div>
         </div>
       </div>

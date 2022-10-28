@@ -1,29 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
 import {FaHome, FaUserCircle, FaGraduationCap, FaEye} from 'react-icons/fa'
 import {GrMail} from 'react-icons/gr'
-import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { HashLink } from 'react-router-hash-link';
 
 function Navbar() {
-  // useEffect(() => {
-  //   Aos.init({
-  //     // delay: 100,
-  //     easing: 'ease-in',
-  //     duration: 0,
-  //     mirror: true,
-  //   });
-  // }, []);
 
   const [nav, setNav] = useState(false);
-
   const handleNav = () => {
     setNav(!nav);
   };
-
-  //bg-gradient-to-r from-[#0891B2] to-[#67E8F9]
 
   return (
     <>

@@ -1,18 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import {SiExpress, SiReact, SiPostgresql} from 'react-icons/si'
-// import RotatingGlobe from './RotatingGlobe.jsx'
 import Scroller from './Scroller'
 
-
-
 const Main = () => {
-
 
   return (
     <div
       id="home"
-      className="w-[90%] max-w-screen m-auto h-[95vh] lg:h-screen text-center flex home-page flex-col"
+      className="w-[90%] max-w-screen m-auto h-[90vh] lg:h-screen text-center flex home-page flex-col"
     >
       <div className="max-w-[1240px] w-full h-full mx-auto flex flex-col justify-center items-center text-zone">
         <div id="home-container-1" className="flex flex-col main h-[100%] home-intro mt-24 sm:mt-36 justify-center">
@@ -60,7 +56,6 @@ const Main = () => {
               <div className="flex flex-col">
                 <span id="home-text-4" className="flex items-center whitespace-nowrap leading-loose tracking-wide text-lg md:text-2xl space-mono ">
                   Full Stack Developer
-                  {/* <span className="hidden md:inline ml-3 text-gray-200">-</span> */}
                 </span>
                 <div className="flex flex-col md:flex-row mt-3 home-skills-container">
                   <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
@@ -81,23 +76,8 @@ const Main = () => {
               </div>
             </div>
           </div>
-          {/* <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
-            <div className='rounded-full bg-[#121212] shadow-sm shadow-[#67E8F9] p-4 m-2 cursor-pointer hover:scale-110 hover:text-[#67E8F9] ease-in duration-100'>
-              <FaLinkedinIn size={30}/>
-            </div>
-            <div className='rounded-full bg-[#121212] shadow-sm shadow-[#67E8F9] p-4 m-2 cursor-pointer hover:scale-110 hover:text-[#67E8F9] ease-in duration-100'>
-              <FaGithub size={30}/>
-            </div>
-            <div className='rounded-full bg-[#121212] shadow-sm shadow-[#67E8F9] p-4 m-2 cursor-pointer hover:scale-110 hover:text-[#67E8F9] ease-in duration-100'>
-              <AiOutlineMail size={30}/>
-            </div>
-            <div className='rounded-full bg-[#121212] shadow-sm shadow-[#67E8F9] p-4 m-2 cursor-pointer hover:scale-110 hover:text-[#67E8F9] ease-in duration-100'>
-              <BsFillPersonLinesFill size={30}/>
-            </div>
-          </div> */}
         </div>
       </div>
-
       <Scroller scrollerID="main-scroller" link="#about" text="scroll down" AOSAnchor="#navbar" AOSOffset="70" AOSAnchorPlacement="top-center" AOSAnimation="fade-up" />
     </div>
   );

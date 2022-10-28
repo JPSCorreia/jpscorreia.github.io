@@ -1,6 +1,5 @@
 import React from 'react'
 import { HashLink } from 'react-router-hash-link';
-import { RiHome2Fill } from 'react-icons/ri'
 import { TiArrowBack } from 'react-icons/ti'
 import { BsOctagon, BsOctagonFill } from 'react-icons/bs'
 import { Button } from '@chakra-ui/react';
@@ -28,11 +27,8 @@ const NotFound = () => {
           server.
         </p>
         <HashLink to="/#">
-          {/* color='#67E8F9' */}
-          {/* 'w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 text-center p-3 text-xl hover:text-[#67E8F9] hover:scale-110 ease-in duration-100' */}
           <div
             className="
-            
             mx-auto 
             bg-transparent
             p-4 
@@ -54,13 +50,6 @@ const NotFound = () => {
             >
               Go Back
             </Button>
-            {/* <div className="flex flex-col justify-between">
-              <div className="outer-home-return-button ">
-                <RiHome2Fill className="my-auto" size={60} />
-                <TiArrowBack className="my-auto" color="#121212" size={45} />
-              </div>
-              <span className="text-2xl my-auto">Go Back</span>
-            </div> */}
           </div>
         </HashLink>
       </div>

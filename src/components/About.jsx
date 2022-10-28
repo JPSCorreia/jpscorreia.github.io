@@ -8,7 +8,7 @@ const About = () => {
   return (
     <div
       id="about"
-      className="w-[90%] m-auto h-screen items-center flex flex-col text-sm sm:text-[16px]" // pt-20 pb-24 md:pt-16 mt-64
+      className="w-[90%] m-auto h-[90vh] lg:h-screen items-center flex flex-col text-sm sm:text-[16px]"
     >
       <div
         className="max-w-[1240px] w-full h-full mx-auto flex flex-col justify-top md:justify-center items-center mt-20 md:mt-0 about-container"

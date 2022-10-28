@@ -1,10 +1,8 @@
 import React from 'react'
-import {HiOutlineChevronDoubleUp} from 'react-icons/hi'
 import { HashLink } from 'react-router-hash-link';
 import {AiOutlineMail} from 'react-icons/ai'
 import {FaGithub, FaLinkedinIn} from 'react-icons/fa'
 import {BsFillPersonLinesFill} from 'react-icons/bs'
-import ScrollerTop from './ScrollerTop'
 
 const Footer = () => {
 

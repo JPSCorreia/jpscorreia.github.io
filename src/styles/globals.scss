@@ -159,7 +159,6 @@ textarea:focus::placeholder {
   margin: 0;
 }
 
-
 .rotating-globe {
   width: 100vw;
   height: 46vh;
@@ -190,30 +189,7 @@ textarea:focus::placeholder {
   min-height: calc(100vh - 76px) ;
 }
 
-.project-type-contain {
-  // min-height: 50vh;
-}
-.project-type-container {
-  // height: 100vh;
-  // min-height: 100vh;
-  // justify-content: space-between;
-}
-
-// .total-container {
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content:space-between;
-// }
-
 #footer {
-  // position: absolute;
-  // bottom: 0;
-  // width: 90%;
-  // justify-self: center;
-  // margin-left: 5% !important;
-  // margin-right: 5% !important;
-  // justify-content: space-between;
   height: 3rem; /* Height of the footer */
 }
 
@@ -223,11 +199,7 @@ textarea:focus::placeholder {
 
   .rotating-globe {
     width: 100vw;
-    height: 46vh !important;
-  }
-
-  .about-text-1 {
-    margin-top: 0;
+    height: 42vh !important;
   }
 
   .about-countainer {
@@ -240,10 +212,25 @@ textarea:focus::placeholder {
 
   .about-text-1 {
     font-size: 1rem;
+    margin-top: 0;
+    padding-top: 0.5rem;
+  }
+
+  .about-text-2 {
+    margin-top: 0.5rem ;
+  }
+
+  .skills-text {
+    margin-top: 0.25rem !important;
+  }
+
+  .skill-icons-container {
+    margin-top: 1rem !important;
   }
 
   .projects-bottom-container {
     gap: 2.5rem !important;
+    margin-top: 2.5rem !important;
   }
 
   .project-type {

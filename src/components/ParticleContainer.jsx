@@ -2,11 +2,12 @@ import React from 'react'
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 
-  const particlesInit = async (main) => {
-    await loadFull(main);
-  };
+const particlesInit = async (main) => {
+  await loadFull(main);
+};
 
 const ParticleContainer = (props) => {
+  
   return (
     <Particles
       id="tsparticles"

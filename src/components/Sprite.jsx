@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from "three";
+import { useDispatch, useSelector } from 'react-redux';
+import { actions } from '../features/actions'
+
 
 const Sprite = ({name, url, position, color, ...props}) => {
 
@@ -10,9 +13,12 @@ const Sprite = ({name, url, position, color, ...props}) => {
     (sprites.current.rotation.y += 0.0011)
   })
 
-  const [opacity, setOpacity] = useState(0.5);
+  const [opacity, setOpacity] = useState(0.6);
   const texture = useLoader(TextureLoader, url)
   const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  // const [scale, setScale] = useState([20, 20, 20]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto';
@@ -21,11 +27,12 @@ const Sprite = ({name, url, position, color, ...props}) => {
   return (
     <group ref={sprites}>
       <sprite
-        scale={[20, 20, 20]}
+        scale={props.scale}
         position={position}
-        onPointerEnter={(e) => setOpacity(1)}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => {setHovered(false); setOpacity(0.6)}}
+        // onClick={() => {setOpacity(1); dispatch(actions.reactHighlight()); console.log('teste')}}
+        // onPointerEnter={(e) => {setOpacity(1); dispatch(actions.teste)}}
+        onPointerOver={() => {setHovered(true); dispatch(props.action(true)); dispatch(props.setOpacity(2)); dispatch(props.setScale([23,23,23])) }}
+        onPointerOut={() => {setHovered(false); dispatch(props.action(false)); dispatch(props.setOpacity(0.6)); dispatch(props.setScale([20,20,20])) }}
       >
         <spriteMaterial
           attach="material"
@@ -35,9 +42,11 @@ const Sprite = ({name, url, position, color, ...props}) => {
           }}
           map={texture}
           fog={false}
-          opacity={opacity}
+          opacity={props.opacity}
         />
+        Text
       </sprite>
+      
     </group>
   );
 }

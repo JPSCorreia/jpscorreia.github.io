@@ -5,6 +5,8 @@ import './styles/globals.scss';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react'
+import { Provider } from "react-redux";
+import store from './features/store'
 
 if (!process.env.REACT_APP_IN_DEVELOPMENT) {
   console.log = () => {}
@@ -12,15 +14,16 @@ if (!process.env.REACT_APP_IN_DEVELOPMENT) {
   console.debug = () => {}
 }
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <ChakraProvider resetCSS={false}>
-        <App /> 
-      </ChakraProvider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <ChakraProvider resetCSS={false}>
+          <App /> 
+        </ChakraProvider>
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
 

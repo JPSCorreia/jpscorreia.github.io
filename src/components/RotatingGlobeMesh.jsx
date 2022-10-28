@@ -23,7 +23,6 @@ function RotatingGlobeMesh(props) {
       {...props}
       ref={mesh}
       scale={1.35}
-      
     >
       <sphereGeometry attach="geometry" args={[40, 30, 30]} />
       <meshStandardMaterial

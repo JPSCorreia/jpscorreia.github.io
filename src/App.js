@@ -9,7 +9,6 @@ import ParticleContainer from './components/ParticleContainer';
 import Loader from './components/Loader';
 import Footer from './components/Footer';
 import ProjectType from './components/ProjectType';
-import ProjectType2 from './components/ProjectType2';
 import TLDRedditLogo from "./assets/projects/tldreddit-full.png"
 import EmporiumLogo from './assets/projects/emporium-full.png';
 import { SiJest, SiReactrouter, SiRedux, SiReact, SiExpress, SiAuth0, SiNodedotjs, SiPostgresql } from 'react-icons/si';
@@ -140,7 +139,6 @@ function App() {
               />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            {/* <div className="h-[5vh] max-w-screen mx-auto w-[90%]"></div> */}
             <Footer />
           </div>
         </>
