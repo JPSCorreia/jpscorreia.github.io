@@ -86,9 +86,9 @@ function App() {
                     ]
                     }
                     projectParagraphOne="Emporium is a PERN stack e-commerce Single Page Application. Users can register and login to the application, browse or search for products, place an order, make a purchase and finally leave a review for the products they bought. You can also add and edit different delivery addresses and switch between a light and dark color theme."
-                    projectParagraphTwo="This application was built using React, bootstrapped with create-react-app and is hosted on Heroku. User registration and login are handled by Auth0, state management by Redux and routing by react-router. UI was built with ChakraUI using formik and yup for form management and validation. Backend API is handled by an Express.js server using various middleware libraries for server protection like helmet and hpp. Database is powered by PostgreSQL."
+                    projectParagraphTwo="This application was built using React, bootstrapped with create-react-app and is hosted on Vercel. User registration and login are handled by Auth0, state management by Redux and routing by react-router. UI was built with ChakraUI using formik and yup for form management and validation. Backend API is handled by an Express.js server using various middleware libraries for server protection like helmet and hpp. Database is powered by PostgreSQL."
                     githubLink="https://github.com/JPSCorreia/emporium-shop-frontend"
-                    exampleLink="https://emporium-shop.herokuapp.com/"
+                    exampleLink="https://emporium-shop.vercel.app/"
                   />
                 }
               />
