@@ -11,7 +11,7 @@ const Footer = () => {
       className="flex flex-row bg-transparent m-auto w-[90%] max-w-[1240px] justify-between lg:justify-center mt-4"
       id="footer"
     >
-      <p className="text-sm self-center footer-text py-2 my-1 lg:ml-8">© 2022 João Correia</p>
+      <p className="text-sm self-center footer-text py-2 my-1 lg:ml-8">© 2024 João Correia</p>
       <div className="flex justify-start mb-1 items-center lg:ml-8">
         <a
           href="https://github.com/JPSCorreia"

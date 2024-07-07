@@ -95,7 +95,7 @@ const Contact = () => {
             leftIcon={<EmailIcon />}
             color="#E5E7EB"
             variant="outline"
-            className="flex flex-center text-xl text-center m-auto hover:text-[#67E8F9] ease-in duration-100 send-message-button"
+            className="flex flex-center text-xl text-center m-auto ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3"
             loadingText="Sending"
             onClick={formik.handleSubmit}
             size={smallMobile? "xs" : "lg"}
@@ -181,7 +181,7 @@ const Contact = () => {
                       >
                         <FormLabel className="pt-2">
                           <div className="flex flex-row justify-start m-auto items-end">
-                            <Text className="uppercase text-sm font-normal leading-3 mt-3 contact-name">
+                            <Text className="uppercase text-sm font-normal leading-4 mt-3 contact-name">
                               Name
                             </Text>
                             <FormErrorMessage className="ml-2 font-normal leading-8 mt-0">
@@ -198,11 +198,11 @@ const Contact = () => {
                           type="text"
                           name="user_name"
                           id="name_input"
+                          errorBorderColor="#e53e3e"
                           focusBorderColor="#67E8F9"
                           variant="flushed"
                           placeholder="Your Name"
                           _placeholder={{ color: 'gray.100', opacity: 0.3 }}
-                          errorBorderColor="red"
                           onChange={formik.handleChange}
                           onBlur={(e) => {
                             formik.handleBlur(e);
@@ -220,7 +220,7 @@ const Contact = () => {
                       >
                         <FormLabel className="pt-2">
                           <div className="flex flex-row justify-start m-auto items-end">
-                            <Text className="uppercase text-sm font-normal leading-3 mt-3 contact-phone">
+                            <Text className="uppercase text-sm font-normal leading-4 mt-3 contact-phone">
                               Phone Number
                             </Text>
                             <FormErrorMessage className="ml-2 font-normal">
@@ -240,7 +240,7 @@ const Contact = () => {
                           variant="flushed"
                           placeholder="Your Phone Number"
                           _placeholder={{ color: 'gray.100', opacity: 0.3 }}
-                          errorBorderColor="red"
+                          errorBorderColor="#e53e3e"
                           focusBorderColor="#67E8F9"
                           onChange={formik.handleChange}
                           onBlur={(e) => {
@@ -261,7 +261,7 @@ const Contact = () => {
                     >
                       <FormLabel className="pt-2">
                         <div className="flex flex-row justify-start m-auto items-end">
-                          <Text className="uppercase text-sm font-normal leading-3 mt-3 contact-email">
+                          <Text className="uppercase text-sm font-normal leading-4 mt-3 contact-email">
                             Email
                           </Text>
                           <FormErrorMessage className="ml-2 font-normal">
@@ -279,7 +279,7 @@ const Contact = () => {
                         variant="flushed"
                         name="user_email"
                         id="email_input"
-                        errorBorderColor="red"
+                        errorBorderColor="#e53e3e"
                         focusBorderColor="#67E8F9"
                         placeholder="Your Email"
                         _placeholder={{ color: 'gray.100', opacity: 0.3 }}
@@ -300,7 +300,7 @@ const Contact = () => {
                     >
                       <FormLabel className="pt-2">
                         <div className="flex flex-row justify-start m-auto items-end">
-                          <Text className="uppercase text-sm font-normal leading-3 mt-3 contact-message">
+                          <Text className="uppercase text-sm font-normal leading-4 mt-3 contact-message">
                             Message
                           </Text>
                           <FormErrorMessage className="ml-2 font-normal">
@@ -318,7 +318,7 @@ const Contact = () => {
                         name="message"
                         variant="flushed"
                         id="message_input"
-                        errorBorderColor="red"
+                        errorBorderColor="#e53e3e"
                         focusBorderColor="#67E8F9"
                         placeholder="Message"
                         _placeholder={{ color: 'gray.100', opacity: 0.3 }}
