@@ -5,30 +5,37 @@
 
   body {
     @apply text-[#E5E7EB] tracking-wide;
+    foo: bar;
   }
 
   html {
     @apply bg-[#ffffff];
+    foo: bar;
   }
 
   #root {
     @apply bg-[#949494] text-[#E5E7EB];
+    foo: bar;
   }
 
   h1,h2,h3,h4,h5,h6 {
     @apply font-bold;
+    foo: bar;
   }
 
   h1 {
     @apply text-4xl sm:text-5xl md:text-6xl;
+    foo: bar;
   }
 
   h2 {
     @apply text-3xl sm:text-4xl;
+    foo: bar;
   }
 
   li {
     @apply cursor-pointer;
+    foo: bar;
   }
 
 }
