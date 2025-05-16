@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.852c278b.css",
-    "main.js": "/static/js/main.1c52b281.js",
+    "main.css": "/static/css/main.2d6de23a.css",
+    "main.js": "/static/js/main.e2bf8c2a.js",
     "static/media/emporium-full.png": "/static/media/emporium-full.5fe15744191f375f50b2.png",
     "static/media/profile.png": "/static/media/profile.8a2302c0da11eaf8e588.png",
     "static/media/tldreddit-full.png": "/static/media/tldreddit-full.1dec59d8a62930ee8b63.png",
@@ -22,7 +22,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.852c278b.css",
-    "static/js/main.1c52b281.js"
+    "static/css/main.2d6de23a.css",
+    "static/js/main.e2bf8c2a.js"
   ]
 }
