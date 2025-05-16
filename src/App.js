@@ -1,6 +1,5 @@
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import React from 'react';
 import NotFound from './components/NotFound';
 import { Routes, Route } from 'react-router';
 import { useEffect, useState } from 'react';
