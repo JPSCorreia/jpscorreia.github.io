@@ -1,8 +1,6 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import React from 'react';
 import * as THREE from 'three';
-import { useMediaQuery } from 'react-responsive';
 
 function RotatingGlobeMesh(props) {
 
@@ -15,8 +13,6 @@ function RotatingGlobeMesh(props) {
   useFrame((state, delta) => {
     (mesh.current.rotation.y += 0.00125)
   })
-
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   
   return (
     <mesh

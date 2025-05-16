@@ -63,6 +63,7 @@ const About = () => {
             </div>
             <Scroller
                 scrollerID="about-scroller"
+                class="page-scroller"
                 text="skills"
                 link="#skills"
                 AOSAnimation="fade-up"

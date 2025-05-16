@@ -1,8 +1,7 @@
-import React from 'react'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { HashLink } from 'react-router-hash-link';
 import MovingText from 'react-moving-text';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 const SideScroller = (props) => {
   return (

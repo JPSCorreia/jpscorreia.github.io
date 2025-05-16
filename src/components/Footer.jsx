@@ -22,7 +22,7 @@ const Footer = () => {
           <FaGithub size={24} />
         </a>
         <a
-          href="https://www.linkedin.com/in/jo%C3%A3o-correia-697764239/"
+          href="https://www.linkedin.com/in/joao-correia-0763bb318/"
           target="_blank"
           rel="noreferrer"
           className="shadow-[#67E8F9] p-2 m-1 cursor-pointer hover:scale-110 hover:text-[#67E8F9] ease-in duration-100"

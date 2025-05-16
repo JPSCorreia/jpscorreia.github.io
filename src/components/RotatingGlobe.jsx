@@ -1,7 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import RotatingGlobeMesh from './RotatingGlobeMesh'
 import { OrbitControls } from '@react-three/drei'
-import React from 'react';
 import Sprite from './Sprite';
 import reactImg from '../assets/react-icon.png'
 import htmlImg from '../assets/html-icon.png'
@@ -13,7 +12,7 @@ import postgresqlImg from '../assets/postgresql-icon.png'
 import reduxImg from '../assets/redux-icon.png'
 import * as THREE from 'three'
 import { useMediaQuery } from 'react-responsive'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { actions } from '../features/actions'
 
 function RotatingGlobe() {
@@ -45,7 +44,6 @@ function RotatingGlobe() {
   const reduxOpacity = useSelector((state) => state.reduxOpacityData)
   const reduxScale = useSelector((state) => state.reduxScaleData)
 
-  const dispatch = useDispatch();
   const reactAction = actions.reactHighlight
   const htmlAction = actions.htmlHighlight
   const cssAction = actions.cssHighlight

@@ -1,16 +1,22 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, {useState} from 'react';
-import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
-import {FaHome, FaUserCircle, FaGraduationCap, FaEye} from 'react-icons/fa'
-import {GrMail} from 'react-icons/gr'
+import { useState } from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { FaHome, FaUserCircle, FaGraduationCap, FaEye } from 'react-icons/fa';
+import { GrMail } from 'react-icons/gr';
 import 'aos/dist/aos.css';
-import { HashLink } from 'react-router-hash-link';
 
 function Navbar() {
-
   const [nav, setNav] = useState(false);
   const handleNav = () => {
     setNav(!nav);
+  };
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      setNav(false); // fechar o menu mobile se estiver aberto
+    }
   };
 
   return (
@@ -23,50 +29,40 @@ function Navbar() {
         <div className="flex justify-end items-center h-full w-full">
           <div data-aos="fade-in" data-aos-once data-aos-duration="400">
             <ul className="hidden lg:flex uppercase mr-[7px] justify-right">
-              <HashLink to="/#home">
-                <li className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 text-center p-3 pt-[1.95rem] text-xl hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
-                  <div className="flex flex-col flex-center">
-                    <FaHome className="flex-center m-auto" size={32} />
-                    <span className="text-xs mt-1 ">Home</span>
-                  </div>
-                </li>
-              </HashLink>
-              <HashLink to="/#about">
-                <li className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 p-3 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 ">
-                  <div className="flex flex-col flex-center">
-                    <FaUserCircle className="flex-center m-auto" size={32} />
-                    <span className="text-xs mt-1">About</span>
-                  </div>
-                </li>
-              </HashLink>
-              <HashLink to="/#skills">
-                <li className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 p-3 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
-                  <div className="flex flex-col flex-center">
-                    <FaGraduationCap className="flex-center m-auto" size={32} />
-                    <span className="text-xs mt-1">Skills</span>
-                  </div>
-                </li>
-              </HashLink>
-              <HashLink to="/#projects">
-                <li className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 p-3 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
-                  <div className="flex flex-col flex-center">
-                    <FaEye className="flex-center m-auto mr-2" size={32} />
-                    <span className="text-xs mt-1 whitespace-nowrap">
-                      Projects
-                    </span>
-                  </div>
-                </li>
-              </HashLink>
-              <HashLink to="/#contact">
-                <li className="w-[100px] hover:shadow-custom pl-6 pr-6 p-3 ml-2 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
-                  <div className="flex flex-col flex-center">
-                    <GrMail className="flex-center m-auto mr-2" size={32} />
-                    <span className="text-xs mt-1 whitespace-nowrap">
-                      Contact
-                    </span>
-                  </div>
-                </li>
-              </HashLink>
+              <li onClick={() => scrollTo('home')} className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 text-center p-3 pt-[1.95rem] text-xl hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
+                <div className="flex flex-col flex-center">
+                  <FaHome className="flex-center m-auto" size={32} />
+                  <span className="text-xs mt-1 ">Home</span>
+                </div>
+              </li>
+              <li onClick={() => scrollTo('about')} className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 p-3 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 ">
+                <div className="flex flex-col flex-center">
+                  <FaUserCircle className="flex-center m-auto" size={32} />
+                  <span className="text-xs mt-1">About</span>
+                </div>
+              </li>
+              <li onClick={() => scrollTo('skills')} className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 p-3 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
+                <div className="flex flex-col flex-center">
+                  <FaGraduationCap className="flex-center m-auto" size={32} />
+                  <span className="text-xs mt-1">Skills</span>
+                </div>
+              </li>
+              <li onClick={() => scrollTo('projects')} className="w-[100px] hover:shadow-custom pl-6 pr-6 ml-2 p-3 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
+                <div className="flex flex-col flex-center">
+                  <FaEye className="flex-center m-auto mr-2" size={32} />
+                  <span className="text-xs mt-1 whitespace-nowrap">
+                    Projects
+                  </span>
+                </div>
+              </li>
+              <li onClick={() => scrollTo('contact')} className="w-[100px] hover:shadow-custom pl-6 pr-6 p-3 ml-2 pt-[1.95rem] text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100">
+                <div className="flex flex-col flex-center">
+                  <GrMail className="flex-center m-auto mr-2" size={32} />
+                  <span className="text-xs mt-1 whitespace-nowrap">
+                    Contact
+                  </span>
+                </div>
+              </li>
             </ul>
             <div
               onClick={handleNav}
@@ -91,77 +87,61 @@ function Navbar() {
             <div>
               <div className="">
                 <ul className="flex flex-col uppercase justify-center align-center mt-6 mr-2 sidebar-navbar">
-                  <HashLink to="/#home">
-                    <li
-                      onClick={handleNav}
-                      className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
-                    >
-                      <div className="flex flex-col flex-center">
-                        <FaHome className="flex-center m-auto" size={32} />
-                        <span className="text-[0.6rem] md:text-xs md:mt-1">
-                          Home
-                        </span>
-                      </div>
-                    </li>
-                  </HashLink>
-                  <HashLink to="/#about">
-                    <li
-                      onClick={handleNav}
-                      className="w-[100%] hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
-                    >
-                      <div className="flex flex-col flex-center">
-                        <FaUserCircle
-                          className="flex-center m-auto"
-                          size={32}
-                        />
-                        <span className="text-[0.6rem] md:text-xs md:mt-1">
-                          About
-                        </span>
-                      </div>
-                    </li>
-                  </HashLink>
-                  <HashLink to="/#skills">
-                    <li
-                      onClick={handleNav}
-                      className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button" 
-                    >
-                      <div className="flex flex-col flex-center">
-                        <FaGraduationCap
-                          className="flex-center m-auto"
-                          size={32}
-                        />
-                        <span className="text-[0.6rem] md:text-xs md:mt-1">
-                          Skills
-                        </span>
-                      </div>
-                    </li>
-                  </HashLink>
-                  <HashLink to="/#projects">
-                    <li
-                      onClick={handleNav}
-                      className="w-[100%] hover:shadow-custom ml-[2px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
-                    >
-                      <div className="flex flex-col flex-center">
-                        <FaEye className="flex-center m-auto" size={32} />
-                        <span className="text-[0.6rem] md:text-xs md:mt-1">
-                          Projects
-                        </span>
-                      </div>
-                    </li>
-                  </HashLink>
-                  <HashLink to="/#contact">
-                    <li
-                      onClick={handleNav}
-                      className="w-[100%] hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
-                    >
-                      <div className="flex flex-col flex-center">
-                        <GrMail className="flex-center m-auto" size={32} />
-                        <span className="text-[0.6rem] md:text-xs md:mt-1">
-                          Contact
-                        </span>
-                      </div>
-                    </li>
-                  </HashLink>
+                  <li
+                    onClick={() => scrollTo('home')}
+                    className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
+                  >
+                    <div className="flex flex-col flex-center">
+                      <FaHome className="flex-center m-auto" size={32} />
+                      <span className="text-[0.6rem] md:text-xs md:mt-1">
+                        Home
+                      </span>
+                    </div>
+                  </li>
+                  <li
+                    onClick={() => scrollTo('about')}
+                    className="w-[100%] hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
+                  >
+                    <div className="flex flex-col flex-center">
+                      <FaUserCircle className="flex-center m-auto" size={32} />
+                      <span className="text-[0.6rem] md:text-xs md:mt-1">
+                        About
+                      </span>
+                    </div>
+                  </li>
+                  <li
+                    onClick={() => scrollTo('skills')}
+                    className="w-[100%]  hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
+                  >
+                    <div className="flex flex-col flex-center">
+                      <FaGraduationCap className="flex-center m-auto" size={32} />
+                      <span className="text-[0.6rem] md:text-xs md:mt-1">
+                        Skills
+                      </span>
+                    </div>
+                  </li>
+                  <li
+                    onClick={() => scrollTo('projects')}
+                    className="w-[100%] hover:shadow-custom ml-[2px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
+                  >
+                    <div className="flex flex-col flex-center">
+                      <FaEye className="flex-center m-auto" size={32} />
+                      <span className="text-[0.6rem] md:text-xs md:mt-1">
+                        Projects
+                      </span>
+                    </div>
+                  </li>
+                  <li
+                    onClick={() => scrollTo('contact')}
+                    className="w-[100%] hover:shadow-custom ml-[3px] py-4 mt-4 text-xl text-center hover:text-[#67E8F9] hover:scale-110 ease-in duration-100 sidebar-button"
+                  >
+                    <div className="flex flex-col flex-center">
+                      <GrMail className="flex-center m-auto" size={32} />
+                      <span className="text-[0.6rem] md:text-xs md:mt-1">
+                        Contact
+                      </span>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>

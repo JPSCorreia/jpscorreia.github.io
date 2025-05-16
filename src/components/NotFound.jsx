@@ -26,7 +26,6 @@ const NotFound = () => {
           The requested URL '{window.location.pathname}' was not found on the
           server.
         </p>
-        <HashLink to="/#">
           <div
             className="
             mx-auto 
@@ -40,6 +39,17 @@ const NotFound = () => {
             ease-in 
             duration-100
           "
+          onClick={() => {
+            const referrer = document.referrer;
+            const sameOrigin = referrer && referrer.startsWith(window.location.origin);
+            
+            if (sameOrigin) {
+              window.history.back();
+            } else {
+              window.location.href = "/";
+            }
+          }}
+          
           >
             <Button
               leftIcon={<TiArrowBack className='mb-1' size={32} />}
@@ -51,7 +61,6 @@ const NotFound = () => {
               Go Back
             </Button>
           </div>
-        </HashLink>
       </div>
     </main>
   );

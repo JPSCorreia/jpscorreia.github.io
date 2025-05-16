@@ -140,7 +140,7 @@ const Skills = () => {
           </div>
         </div>
       </div>
-      <Scroller scrollerID="skills-scroller" link="#projects" text="projects" AOSAnimation="fade-up" AOSAnchor="#after-about" AOSOffset="-50" AOSAnchorPlacement="bottom-bottom"/>
+      <Scroller scrollerID="skills-scroller" class="page-scroller" link="#projects" text="projects" AOSAnimation="fade-up" AOSAnchor="#after-about" AOSOffset="-50" AOSAnchorPlacement="bottom-bottom"/>
     </div>
   );
 }

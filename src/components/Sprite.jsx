@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from "three";
-import { useDispatch, useSelector } from 'react-redux';
-import { actions } from '../features/actions'
+import { useDispatch,  } from 'react-redux';
 
 
 const Sprite = ({name, url, position, color, ...props}) => {
@@ -13,11 +12,8 @@ const Sprite = ({name, url, position, color, ...props}) => {
     (sprites.current.rotation.y += 0.0011)
   })
 
-  const [opacity, setOpacity] = useState(0.6);
   const texture = useLoader(TextureLoader, url)
   const [hovered, setHovered] = useState(false);
-  const [clicked, setClicked] = useState(false);
-  // const [scale, setScale] = useState([20, 20, 20]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,8 +25,6 @@ const Sprite = ({name, url, position, color, ...props}) => {
       <sprite
         scale={props.scale}
         position={position}
-        // onClick={() => {setOpacity(1); dispatch(actions.reactHighlight()); console.log('teste')}}
-        // onPointerEnter={(e) => {setOpacity(1); dispatch(actions.teste)}}
         onPointerOver={() => {setHovered(true); dispatch(props.action(true)); dispatch(props.setOpacity(2)); dispatch(props.setScale([23,23,23])) }}
         onPointerOut={() => {setHovered(false); dispatch(props.action(false)); dispatch(props.setOpacity(0.6)); dispatch(props.setScale([20,20,20])) }}
       >

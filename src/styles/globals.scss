@@ -5,37 +5,30 @@
 
   body {
     @apply text-[#E5E7EB] tracking-wide;
-    foo: bar;
   }
 
   html {
     @apply bg-[#ffffff];
-    foo: bar;
   }
 
   #root {
     @apply bg-[#949494] text-[#E5E7EB];
-    foo: bar;
   }
 
   h1,h2,h3,h4,h5,h6 {
     @apply font-bold;
-    foo: bar;
   }
 
   h1 {
     @apply text-4xl sm:text-5xl md:text-6xl;
-    foo: bar;
   }
 
   h2 {
     @apply text-3xl sm:text-4xl;
-    foo: bar;
   }
 
   li {
     @apply cursor-pointer;
-    foo: bar;
   }
 
 }
@@ -153,6 +146,7 @@ textarea:focus::placeholder {
   color: #ffffff !important;
 }
 
+
 // 1440p screens
 
 #App {
@@ -176,7 +170,7 @@ textarea:focus::placeholder {
 }
 
 .about-text-1 {
-  margin-top: 0;
+  // margin-top: 0;
   font-size: 1rem;
 }
 
@@ -188,9 +182,9 @@ textarea:focus::placeholder {
   font-size: 1rem;
 }
 
-.projects-bottom-container {
-  gap: 6rem !important;
-}
+// .projects-bottom-container {
+//   gap: 6rem !important;
+// }
 
 .project-type {
   min-height: calc(100vh - 76px) ;
@@ -239,10 +233,10 @@ textarea:focus::placeholder {
     margin-top: 1rem !important;
   }
 
-  .projects-bottom-container {
-    gap: 2.5rem !important;
-    margin-top: 2.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   gap: 2.5rem !important;
+  //   margin-top: 2.5rem !important;
+  // }
 
   .project-type {
     height: calc(100vh - 76px);
@@ -271,9 +265,9 @@ textarea:focus::placeholder {
 // Moto G4
 @media (max-width: 600px) and (max-height: 600px) {
 
-  .rotating-globe {
-    display: none !important;
-  }
+  // .rotating-globe {
+  //   display: none !important;
+  // }
 
 
   .sidebar-button {
@@ -382,10 +376,10 @@ textarea:focus::placeholder {
     margin-bottom: 0;
   }
 
-  .projects-bottom-container {
-    grid-gap: 1.5rem !important;
-    margin-top: 0.5rem;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 1.5rem !important;
+  //   margin-top: 0.5rem;
+  // }
 
   #project-sidescroll {
     display: none;
@@ -490,7 +484,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 36vh !important;
-    display: none;
+    // display: none;
   }
 
   .skill-icons-container {
@@ -573,10 +567,10 @@ textarea:focus::placeholder {
     margin-top: 1rem;
   }
 
-  .projects-bottom-container {
-    grid-gap: 1.5rem !important;
-    margin-top: 0.5rem;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 1.5rem !important;
+  //   margin-top: 0.5rem;
+  // }
 
   .footer-text {
     display: none;
@@ -625,7 +619,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 36vh !important;
-    display: none;
+    // display: none;
   }
 
   #projects-container {
@@ -697,9 +691,9 @@ textarea:focus::placeholder {
     font-size: 0.75rem;
   }
 
-  .projects-bottom-container {
-    grid-gap: 2.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 2.5rem !important;
+  // }
 
 }
 
@@ -771,9 +765,9 @@ textarea:focus::placeholder {
     display: none;
   }
 
-  .projects-bottom-container {
-    grid-gap: 2.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 2.5rem !important;
+  // }
 
   .projects-top-text-2 {
     margin-bottom: 0rem;
@@ -846,9 +840,9 @@ textarea:focus::placeholder {
     grid-gap: 0;
   }
 
-  .projects-bottom-container {
-    grid-gap: 2.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 2.5rem !important;
+  // }
 
 }
 
@@ -881,7 +875,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 35vh !important;
-    display: none;
+    // display: none;
   }
 
   .skills-text {
@@ -899,9 +893,9 @@ textarea:focus::placeholder {
   #projects-container {
     justify-content: center;
   }
-  .projects-bottom-container {
-    grid-gap: 3.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 3.5rem !important;
+  // }
 }
 
 // iPhone 12 Pro
@@ -933,7 +927,7 @@ textarea:focus::placeholder {
   .rotating-globe {
     width: 100vw;
     height: 35vh !important;
-    display: none;
+    // display: none;
   }
 
   .skills-text {
@@ -953,18 +947,18 @@ textarea:focus::placeholder {
     justify-content: center;
   }
 
-  .projects-bottom-container {
-    grid-gap: 3.5rem;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 3.5rem;
+  // }
 
   .send-button {
     margin-top: 0.75rem;
     margin-bottom: 0rem;
   }
 
-  .projects-bottom-container {
-    grid-gap: 3rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 3rem !important;
+  // }
 
   .footer-text {
     font-size: 0.75rem;
@@ -1033,10 +1027,10 @@ textarea:focus::placeholder {
     padding-top: 0.5rem;
   }
 
-  .projects-bottom-container {
-    grid-gap: 2.5rem !important;
-    margin-top: 1rem;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 2.5rem !important;
+  //   margin-top: 1rem;
+  // }
 }
 
 // iPad Air
@@ -1073,9 +1067,9 @@ textarea:focus::placeholder {
     justify-content: center;
   }
 
-  .projects-bottom-container {
-    grid-gap: 4.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 4.5rem !important;
+  // }
 
   .project-item-container {
     padding-top: 3.5rem !important;
@@ -1132,9 +1126,9 @@ textarea:focus::placeholder {
     justify-content: center;
   }
 
-  .projects-bottom-container {
-    grid-gap: 3.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 3.5rem !important;
+  // }
 
   .project-item-container {
     padding-top: 3rem !important;
@@ -1194,9 +1188,9 @@ textarea:focus::placeholder {
     justify-content: center;
   }
 
-  .projects-bottom-container {
-    grid-gap: 5.5rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 5.5rem !important;
+  // }
 
   .project-item-container {
     padding-top: 3.5rem !important;
@@ -1257,10 +1251,10 @@ textarea:focus::placeholder {
     margin-bottom: 0;
   }
 
-  .projects-bottom-container {
-    grid-gap: 2rem !important;
-    margin-top: 1rem;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 2rem !important;
+  //   margin-top: 1rem;
+  // }
 
   .project-item-container {
     padding-top: 1rem !important;
@@ -1354,18 +1348,18 @@ textarea:focus::placeholder {
     margin-top: 6rem !important;
   }
 
-  .projects-bottom-container {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
+  // .projects-bottom-container {
+  //   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  // }
 
   #projects-container {
     justify-content: center;
     margin-bottom: 0;
   }
 
-  .projects-bottom-container {
-    grid-gap: 2rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 2rem !important;
+  // }
 
   .project-item-container {
     padding-top: 3rem !important;
@@ -1467,18 +1461,18 @@ textarea:focus::placeholder {
     margin-top: 6rem !important;
   }
 
-  .projects-bottom-container {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
+  // .projects-bottom-container {
+  //   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  // }
 
   #projects-container {
     justify-content: center;
     margin-bottom: 0;
   }
 
-  .projects-bottom-container {
-    grid-gap: 2rem !important;
-  }
+  // .projects-bottom-container {
+  //   grid-gap: 2rem !important;
+  // }
 
   .project-item-container {
     padding-top: 3rem !important;
@@ -1509,12 +1503,31 @@ textarea:focus::placeholder {
   }
 }
 
+// @media (max-width:1023px) {
+//   #skills {
+//     height: 100vh;
+//     margin-top: 10rem !important;
+//   }
+// }
 
 
 
 
-
-
+#about {
+  height: 100vh !important;
+}
+#skills {
+  height: 100vh !important;
+}
+#projects {
+  height: 100vh !important;
+}
+#contact {
+  height: 100vh !important;
+}
+#home {
+  height: 100vh !important;
+}
 
 
 
