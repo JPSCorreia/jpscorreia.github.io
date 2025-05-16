@@ -4,7 +4,6 @@ import { useMediaQuery } from 'react-responsive';
 
 const Scroller = (props) => {
   const smallMobile = useMediaQuery({ query: '(max-width: 360px)' });
-  const displayOrNot = useMediaQuery({ query: '(max-width: 1023px)' });
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -16,10 +15,9 @@ const Scroller = (props) => {
   };
 
   return (
-    displayOrNot ? null :
     <div
       id={props.scrollerID}
-      className="flex flex-col items-center justify-center bg-transparent cursor-pointer hover:text-[#67E8F9] mt-2 z-500 scroller-normal"
+      className="flex flex-col items-center justify-center bg-transparent cursor-pointer hover:text-[#67E8F9] mt-2 z-500 scroller-normal mb-6"
       data-aos={props.AOSAnimation}
       data-aos-anchor={props.AOSAnchor}
       data-aos-offset={props.AOSOffset}

@@ -3,7 +3,7 @@ import About from './About'
 import Skills from './Skills'
 import Projects from './Projects'
 import Contact from './Contact'
-import React, {useEffect} from 'react';
+import {useEffect, useLayoutEffect} from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -16,7 +16,18 @@ const Home = () => {
       mirror: true,
     });
   }, []);
-
+  
+  useLayoutEffect(() => {
+    const scrollTarget = sessionStorage.getItem("scrollTarget");
+    if (scrollTarget) {
+      const el = document.getElementById(scrollTarget);
+      if (el) {
+        el.scrollIntoView();
+      }
+      sessionStorage.removeItem("scrollTarget");
+    }
+  }, []);
+  
   return (
     <main className="maincontainer flex flex-col max-w-screen">
       <Main />

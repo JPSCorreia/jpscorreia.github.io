@@ -1,10 +1,15 @@
-import React from 'react'
-import { HashLink } from 'react-router-hash-link';
 import {AiOutlineMail} from 'react-icons/ai'
 import {FaGithub, FaLinkedinIn} from 'react-icons/fa'
 import {BsFillPersonLinesFill} from 'react-icons/bs'
 
 const Footer = () => {
+
+    const scrollToContact = () => {
+        const el = document.getElementById("contact");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      };
 
   return (
     <div
@@ -36,11 +41,12 @@ const Footer = () => {
         >
           <AiOutlineMail size={24} />
         </a>
-        <HashLink to="#contact">
-          <div className="shadow-[#67E8F9] p-2 m-1 pr-0 cursor-pointer hover:scale-110 hover:text-[#67E8F9] ease-in duration-100 last-footer-icon">
+          <div 
+            className="shadow-[#67E8F9] p-2 m-1 pr-0 cursor-pointer hover:scale-110 hover:text-[#67E8F9] ease-in duration-100 last-footer-icon"
+            onClick={scrollToContact}
+            >
             <BsFillPersonLinesFill size={24} />
           </div>
-        </HashLink>
       </div>
     </div>
   );

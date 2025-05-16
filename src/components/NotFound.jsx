@@ -1,5 +1,3 @@
-import React from 'react'
-import { HashLink } from 'react-router-hash-link';
 import { TiArrowBack } from 'react-icons/ti'
 import { BsOctagon, BsOctagonFill } from 'react-icons/bs'
 import { Button } from '@chakra-ui/react';
@@ -23,7 +21,7 @@ const NotFound = () => {
         </div>
 
         <p className="py-4 text-gray-200 text-center text-xl md:text-2xl mt-8">
-          The requested URL '{window.location.pathname}' was not found on the
+          The requested URL '{window.location.hash}' was not found on the
           server.
         </p>
           <div
@@ -52,11 +50,11 @@ const NotFound = () => {
           
           >
             <Button
-              leftIcon={<TiArrowBack className='mb-1' size={32} />}
-              color="#ffffff"
-              variant="outline"
-              className="flex flex-center text-xl px-0 text-center m-auto hover:text-[#67E8F9] ease-in duration-100 "
-              size='lg'
+                leftIcon={<TiArrowBack className='mb-1' size={32} />}
+                color="#E5E7EB"
+                variant="outline"
+                className="flex flex-center text-xl text-center m-auto ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3"
+                size='lg'
             >
               Go Back
             </Button>

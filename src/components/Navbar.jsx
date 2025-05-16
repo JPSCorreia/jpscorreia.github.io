@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { FaHome, FaUserCircle, FaGraduationCap, FaEye } from 'react-icons/fa';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { GrMail } from 'react-icons/gr';
 import 'aos/dist/aos.css';
 
@@ -11,13 +12,20 @@ function Navbar() {
     setNav(!nav);
   };
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setNav(false); // fechar o menu mobile se estiver aberto
+    const atHome = location.pathname === "/" && !location.hash;
+    if (atHome) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      sessionStorage.setItem("scrollTarget", id);
+      navigate("/");
     }
   };
+  
 
   return (
     <>
