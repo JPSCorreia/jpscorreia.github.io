@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4356de49.css",
-    "main.js": "/static/js/main.3ad0bd06.js",
+    "main.css": "/static/css/main.852c278b.css",
+    "main.js": "/static/js/main.9d32ed16.js",
     "static/media/emporium-full.png": "/static/media/emporium-full.5fe15744191f375f50b2.png",
     "static/media/profile.png": "/static/media/profile.8a2302c0da11eaf8e588.png",
     "static/media/tldreddit-full.png": "/static/media/tldreddit-full.1dec59d8a62930ee8b63.png",
@@ -19,12 +19,10 @@
     "static/media/html-icon.png": "/static/media/html-icon.042e260a83abb557c9c7.png",
     "static/media/javascript-icon.png": "/static/media/javascript-icon.3d09f2e45b9c5f40efb8.png",
     "static/media/CoolveticaRg-Regular.woff2": "/static/media/CoolveticaRg-Regular.7d1f3b1dd46ad6557a17.woff2",
-    "index.html": "/index.html",
-    "main.4356de49.css.map": "/static/css/main.4356de49.css.map",
-    "main.3ad0bd06.js.map": "/static/js/main.3ad0bd06.js.map"
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.4356de49.css",
-    "static/js/main.3ad0bd06.js"
+    "static/css/main.852c278b.css",
+    "static/js/main.9d32ed16.js"
   ]
 }
