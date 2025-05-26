@@ -20,9 +20,9 @@ const ProjectType = (props) => {
     }, []);
 
     const scrollToProjects = () => {
-        sessionStorage.setItem("scrollTarget", "projects");
-        window.location.href = "/";
-      };
+        sessionStorage.setItem('scrollTarget', 'projects');
+        window.location.href = '/';
+    };
 
     return (
         <div
@@ -37,13 +37,16 @@ const ProjectType = (props) => {
                     AOSAnchor={props.AOSAnchor}
                 />
                 <div className="absolute lg:top-left-0 w-full lg:top-20 h-[20vh] lg:h-[calc(25vh-80px)] bg-[#121212]/70 z-10"></div>
-                    <div  className="absolute top-[94%] z-10 p-6 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] ">
-                        <div className="flex flex-row items-baseline mb-2">
-                            <p onClick={scrollToProjects} className="text-xl tracking-widest uppercase cursor-pointer  header-text-top text-[#67E8F9] hover:underline underline-offset-4 ">
-                                Projects
-                            </p>
-                        </div>
+                <div className="absolute top-[94%] z-10 p-6 max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] ">
+                    <div className="flex flex-row items-baseline mb-2">
+                        <p
+                            onClick={scrollToProjects}
+                            className="text-xl tracking-widest uppercase cursor-pointer  header-text-top text-[#67E8F9] hover:underline underline-offset-4 "
+                        >
+                            Projects
+                        </p>
                     </div>
+                </div>
             </div>
             <SideScroller
                 AOSAnchor={props.AOSAnchor}
@@ -107,38 +110,42 @@ const ProjectType = (props) => {
                             data-aos-anchor={props.AOSAnchor}
                             data-aos-duration="400"
                         >
-                            <a
-                                href={props.exampleLink}
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                <Button
-                                    leftIcon={<IoPlay />}
-                                    color="#E5E7EB"
-                                    variant="outline"
-                                    borderRadius="4px"
-                                    className="flex flex-center text-xl text-center m-auto w-[7rem] ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3 "
-                                    size="lg"
+                            {props.githubLink ? (
+                                <a
+                                    href={props.githubLink}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
                                 >
-                                    Demo
-                                </Button>
-                            </a>
-                            <a
-                                href={props.githubLink}
-                                target="_blank"
-                                rel="noreferrer noopener"
-                            >
-                                <Button
-                                    leftIcon={<FaGithub />}
-                                    color="#E5E7EB"
-                                    variant="outline"
-                                    borderRadius="4px"
-                                    className="flex flex-center ml-2 text-xl text-center m-auto w-[7rem] ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3"
-                                    size="lg"
+                                    <Button
+                                        leftIcon={<FaGithub />}
+                                        color="#E5E7EB"
+                                        variant="outline"
+                                        borderRadius="4px"
+                                        className="flex flex-center text-xl text-center m-auto w-[7rem] ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3"
+                                        size="lg"
+                                    >
+                                        Code
+                                    </Button>
+                                </a>
+                            ) : null}
+                            {props.exampleLink ? (
+                                <a
+                                    href={props.exampleLink}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
                                 >
-                                    Code
-                                </Button>
-                            </a>
+                                    <Button
+                                        leftIcon={<IoPlay />}
+                                        color="#E5E7EB"
+                                        variant="outline"
+                                        borderRadius="4px"
+                                        className="flex flex-center ml-2 text-xl text-center m-auto w-[7rem] ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3 "
+                                        size="lg"
+                                    >
+                                        Demo
+                                    </Button>
+                                </a>
+                            ) : null}
                         </div>
                     </div>
                 </div>

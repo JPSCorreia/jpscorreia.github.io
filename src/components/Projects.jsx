@@ -1,7 +1,9 @@
 import ProjectItem from './ProjectItem';
 import tldreddit from '../assets/projects/TLDReddit-logo3.png';
 import emporium from '../assets/projects/emporium-logo4.png';
-import github from '../assets/projects/github-projects-logo.png';
+import biorama from '../assets/projects/biorama-logo.webp';
+import lifecoach from '../assets/projects/lifecoach-logo.png';
+// import github from '../assets/projects/github-projects-logo.png';
 
 import Scroller from './Scroller';
 
@@ -33,11 +35,27 @@ const Projects = () => {
                         What I've Worked On
                     </h2>
                     <div
-                        className="grid grid-cols-1 gap-8 mt-8 md:mt-16 projects-bottom-container"
+                        className="grid md:grid-cols-2 gap-8 md:gap-10 mt-4 md:mt-16 projects-bottom-container"
                         data-aos="fade-right"
                         data-aos-anchor="#projects"
                         data-aos-duration="400"
                     >
+                        <ProjectItem
+                            title="Biorama"
+                            projectType="Full Stack Project"
+                            navlink="/biorama"
+                            isNavlink={true}
+                            backgroundImg={biorama}
+                            projectUrl="emporium"
+                        />
+                        <ProjectItem
+                            title="Life Coach"
+                            projectType="Full Stack Project"
+                            navlink="/lifecoach"
+                            isNavlink={true}
+                            backgroundImg={lifecoach}
+                            projectUrl="emporium"
+                        />
                         <ProjectItem
                             title="Emporium"
                             projectType="Full Stack Project"
@@ -54,14 +72,15 @@ const Projects = () => {
                             backgroundImg={tldreddit}
                             projectUrl="tldreddit"
                         />
-                        <ProjectItem
+
+                        {/* <ProjectItem
                             title="GitHub Projects"
                             projectType="GitHub Projects"
                             isNavlink={false}
                             navlink="https://github.com/JPSCorreia"
                             backgroundImg={github}
                             projectUrl="github"
-                        />
+                        /> */}
                     </div>
                 </div>
             </div>
