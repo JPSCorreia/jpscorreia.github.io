@@ -11,10 +11,10 @@ const Projects = () => {
     return (
         <div
             id="projects"
-            className="w-[90%] m-auto h-[90vh] lg:h-screen items-center flex flex-col"
+            className="w-[90%] m-auto min-h-screen pt-20 items-center flex flex-col"
         >
             <div
-                className="max-w-[1240px] w-full h-full mx-auto flex flex-col items-center md:justify-center"
+                className="max-w-[1240px] w-full flex-1 mx-auto flex flex-col items-center justify-center"
                 id="projects-container"
             >
                 <div className="flex flex-col w-full">
@@ -35,7 +35,7 @@ const Projects = () => {
                         What I've Worked On
                     </h2>
                     <div
-                        className="grid md:grid-cols-2 gap-8 md:gap-10 mt-4 md:mt-16 projects-bottom-container"
+                        className="grid md:grid-cols-2 gap-6 md:gap-8 mt-4 md:mt-6 projects-bottom-container"
                         data-aos="fade-right"
                         data-aos-anchor="#projects"
                         data-aos-duration="400"

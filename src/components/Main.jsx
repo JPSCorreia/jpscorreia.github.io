@@ -8,9 +8,9 @@ const Main = () => {
   return (
     <div
       id="home"
-      className="w-[90%] max-w-screen m-auto h-[90vh] lg:h-screen text-center flex home-page flex-col"
+      className="w-[90%] max-w-screen m-auto min-h-screen pt-20 text-center flex home-page flex-col"
     >
-      <div className="max-w-[1240px] w-full h-full mx-auto flex flex-col justify-center items-center text-zone">
+      <div className="max-w-[1240px] w-full flex-1 mx-auto flex flex-col justify-center items-center text-zone">
         <div id="home-container-1" className="flex flex-col main h-[100%] home-intro mt-24 sm:mt-36 justify-center">
           <div className="flex flex-col">
             <div
@@ -55,7 +55,7 @@ const Main = () => {
             <div id="home-text-5" className="py-2 text-start flex flex-col md:flex-row text-[#67E8F9] mt-4">
               <div className="flex flex-col">
                 <span id="home-text-4" className="flex items-center whitespace-nowrap leading-loose tracking-wide text-lg md:text-2xl space-mono ">
-                  Full Stack Developer
+                  Freelance Frontend Developer
                 </span>
                 <div className="flex flex-col md:flex-row mt-3 home-skills-container">
                   <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">

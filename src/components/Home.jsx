@@ -19,13 +19,13 @@ const Home = () => {
     useEffect(() => {
         const scrollTarget = sessionStorage.getItem('scrollTarget');
         if (scrollTarget) {
-            setTimeout(() => {
-                const el = document.getElementById(scrollTarget);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' });
-                }
-                sessionStorage.removeItem('scrollTarget');
-            }, 0);
+            sessionStorage.removeItem('scrollTarget');
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    const el = document.getElementById(scrollTarget);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
         }
     }, []);
 

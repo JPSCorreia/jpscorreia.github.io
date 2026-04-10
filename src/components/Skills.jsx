@@ -23,10 +23,10 @@ const Skills = () => {
   return (
     <div
       id="skills"
-      className="w-[90%] m-auto h-[90vh] lg:h-screen items-center flex flex-col" // w-[90%] m-auto md:h-screen p-2 flex flex-col justify-between md:pt-16 pt-12 mt-24
+      className="w-[90%] m-auto min-h-screen pt-20 items-center flex flex-col" // w-[90%] m-auto md:h-screen p-2 flex flex-col justify-between md:pt-16 pt-12 mt-24
     >
       <div
-        className="max-w-[1240px] h-full w-full mx-auto flex flex-col items-center mt-20 justify-top md:justify-center"
+        className="max-w-[1240px] flex-1 w-full mx-auto flex flex-col items-center justify-center"
         id="skills-container"
         data-aos="fade-left"
         data-aos-anchor="#skills"

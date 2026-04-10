@@ -13,6 +13,18 @@
     <link as="font" href="../src/styles/helvetica-neu.ttf" type="font/ttf" crossorigin="anonymous">
     <link as="font" href="../src/styles/Oswald-Medium.ttf"  type="font/ttf" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&');
+          });
+          window.history.replaceState(null, null,
+            decoded[0] + (decoded[1] ? '&' + decoded[1] : '') + l.hash
+          );
+        }
+      }(window.location));
+    </script>
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"

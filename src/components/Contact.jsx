@@ -86,7 +86,7 @@ const Contact = () => {
                         variant="none"
                         borderRadius="4px"
                         className="flex cursor-default flex-center text-xl text-center m-auto ease-in duration-100 send-message-button"
-                        size={smallMobile ? 'xs' : 'lg'}
+                        size='lg'
                     >
                         Submitted
                     </Button>
@@ -101,7 +101,7 @@ const Contact = () => {
                         className="flex flex-center text-xl text-center m-auto ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3"
                         loadingText="Sending"
                         onClick={formik.handleSubmit}
-                        size={smallMobile ? 'xs' : 'lg'}
+                        size='lg'
                     >
                         Send Message
                     </Button>
@@ -116,7 +116,7 @@ const Contact = () => {
                         borderRadius="4px"
                         isLoading
                         loadingText="Sending"
-                        size={smallMobile ? 'xs' : 'lg'}
+                        size='lg'
                     >
                         Send Message
                     </Button>
@@ -130,7 +130,7 @@ const Contact = () => {
                         borderRadius="4px"
                         className="flex flex-center text-xl text-center m-auto ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3"
                         onClick={formik.handleSubmit}
-                        size={smallMobile ? 'xs' : 'lg'}
+                        size='lg'
                     >
                         Error: Send Again
                     </Button>
@@ -143,10 +143,10 @@ const Contact = () => {
     return (
         <div
             id="contact"
-            className="w-[90%] m-auto items-center h-[90vh] lg:h-screen flex flex-col" // pt-4 mt-32 mb-16 lg:mb-16 xl:mb-16
+            className="w-[90%] m-auto items-center min-h-screen pt-20 flex flex-col" // pt-4 mt-32 mb-16 lg:mb-16 xl:mb-16
         >
             <div
-                className="max-w-[1240px] w-full h-full mx-auto flex flex-col mt-20 md:justify-center" //md:py-16
+                className="max-w-[1240px] w-full flex-1 mx-auto flex flex-col justify-center" //md:py-16
                 id="contact-container"
                 data-aos="fade-left"
                 data-aos-anchor="#contact"
@@ -161,18 +161,17 @@ const Contact = () => {
                 <h2 className="mt-1 text-gray-200 text-end tracking-wide text-2xl md:text-3xl space-mono font-normal mb-4 how-to-contact">
                     How To Get in Touch
                 </h2>
-                <div className="md:mt-8" id="contact-form">
+                <div className="md:mt-8 flex flex-col flex-1 mb-4 md:max-h-[540px]" id="contact-form">
                     <div
                         className={
-                            finish || focused ? styleFocused : styleUnfocused
+                            (finish || focused ? styleFocused : styleUnfocused) + ' flex flex-col flex-1'
                         }
                         id="contact-complete-form"
                     >
-                        <div className="lg:p-2 h-full contact-complete-form-2">
-                            <div>
-                                <div className="col-span-3 w-full h-auto">
-                                    <div>{focused}</div>
-                                    <form onSubmit={formik.handleSubmit}>
+                        <div className="lg:p-2 flex flex-col flex-1 contact-complete-form-2">
+                            <div className="flex flex-col flex-1">
+                                <div className="col-span-3 w-full flex flex-col flex-1">
+                                    <form className="flex flex-col flex-1" onSubmit={formik.handleSubmit}>
                                         <div className="grid md:grid-cols-2 gap-4 md:gap-8 w-full name-phone-grid">
                                             <FormControl
                                                 isInvalid={
@@ -327,7 +326,7 @@ const Contact = () => {
                                                 formik.errors.message &&
                                                 formik.touched.message
                                             }
-                                            className="flex flex-col md:pt-4"
+                                            className="flex flex-col flex-1 md:pt-4"
                                         >
                                             <FormLabel className="pt-2">
                                                 <div className="flex flex-row justify-start m-auto items-end">
@@ -345,7 +344,8 @@ const Contact = () => {
                                                     setFocused(true);
                                                 }}
                                                 className="contact-zone"
-                                                rows={smallMobile ? '2' : '6'}
+                                                flex={1}
+                                                resize="none"
                                                 name="message"
                                                 variant="flushed"
                                                 id="message_input"
@@ -366,7 +366,7 @@ const Contact = () => {
                                             />
                                         </FormControl>
 
-                                        <div className="flex flex-row w-[95%] m-auto mt-6 mb-3 md:mb-3 send-button">
+                                        <div className="flex flex-row w-[95%] m-auto pt-6 pb-4 send-button">
                                             {renderButton()}
                                         </div>
                                     </form>

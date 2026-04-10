@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 import { Button } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import { IoPlay } from 'react-icons/io5';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { HashLink } from 'react-router-hash-link';
+import MovingText from 'react-moving-text';
 import ProjectTechnologies from './ProjectTechnologies';
 import SideScroller from './SideScroller';
 import ProjectImage from './ProjectImage';
@@ -73,6 +75,42 @@ const ProjectType = (props) => {
                 {/* lg:grid-cols-5 */}
                 <div className="flex flex-col project-type-container justify-top">
                     <div className="">
+                        <div className="flex flex-row justify-between items-center mb-4 2xl:hidden">
+                            <HashLink to={props.navLinkToBack}>
+                                <MovingText
+                                    className="space-mono flex flex-row items-center ease-in duration-100 text-sm tracking-wide text-gray-200 hover:text-[#67E8F9]"
+                                    type="pulse"
+                                    duration="750ms"
+                                    delay="0s"
+                                    direction="alternate-reverse"
+                                    timing="ease-in-out"
+                                    iteration="infinite"
+                                    fillMode="none"
+                                >
+                                    <div className="flex flex-row items-center gap-1">
+                                        <HiChevronLeft size={20} />
+                                        previous
+                                    </div>
+                                </MovingText>
+                            </HashLink>
+                            <HashLink to={props.navLinkToNext}>
+                                <MovingText
+                                    className="space-mono flex flex-row items-center ease-in duration-100 text-sm tracking-wide text-gray-200 hover:text-[#67E8F9]"
+                                    type="pulse"
+                                    duration="750ms"
+                                    delay="0s"
+                                    direction="alternate-reverse"
+                                    timing="ease-in-out"
+                                    iteration="infinite"
+                                    fillMode="none"
+                                >
+                                    <div className="flex flex-row items-center gap-1">
+                                        next
+                                        <HiChevronRight size={20} />
+                                    </div>
+                                </MovingText>
+                            </HashLink>
+                        </div>
                         <div className="flex flex-row mb-4 items-center">
                             <h2
                                 className=""
