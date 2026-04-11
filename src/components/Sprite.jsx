@@ -1,67 +1,89 @@
 import { useRef, useState, useEffect } from 'react';
-import { useFrame, useLoader } from '@react-three/fiber'
-import { TextureLoader } from "three";
-import { useDispatch,  } from 'react-redux';
+import { useFrame, useLoader } from '@react-three/fiber';
+import { TextureLoader } from 'three';
+import * as THREE from 'three';
+import { useDispatch } from 'react-redux';
+import { globeControl } from '../features/globeControl';
 
-
-const Sprite = ({name, url, position, color, ...props}) => {
-
-  // This reference gives us direct access to the THREE.Mesh object
-  const sprites = useRef()
-  useFrame((state, delta) => {
-    (sprites.current.rotation.y += 0.0011)
-  })
-
-  const texture = useLoader(TextureLoader, url)
+const Sprite = ({ name, url, position, color, spinRef, ...props }) => {
+  const texture = useLoader(TextureLoader, url);
   const [hovered, setHovered] = useState(false);
   const dispatch = useDispatch();
+  const pulseRef = useRef();
+  const pulseProgress = useRef(0);
+  const isPulsing = useRef(false);
 
   useEffect(() => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto';
   }, [hovered]);
-  
+
+  useFrame((state) => {
+    if (!pulseRef.current) return;
+    pulseRef.current.lookAt(state.camera.position);
+    if (isPulsing.current) {
+      pulseProgress.current = Math.min(pulseProgress.current + 0.025, 1);
+      const s = 1 + pulseProgress.current * 2;
+      pulseRef.current.scale.set(s, s, s);
+      pulseRef.current.material.opacity = 0.65 * (1 - pulseProgress.current);
+      if (pulseProgress.current >= 1) isPulsing.current = false;
+    } else {
+      pulseRef.current.material.opacity = 0;
+    }
+  });
+
+  const handleClick = () => {
+    // Spin globe to bring this sprite to front
+    if (spinRef?.current) {
+      const currentY = spinRef.current.rotation.y;
+      const [px, , pz] = position;
+      const cosR = Math.cos(currentY);
+      const sinR = Math.sin(currentY);
+      const curX = px * cosR + pz * sinR;
+      const curZ = -px * sinR + pz * cosR;
+      const curAngle = Math.atan2(curX, curZ);
+      let delta = -curAngle;
+      if (delta > Math.PI) delta -= 2 * Math.PI;
+      if (delta < -Math.PI) delta += 2 * Math.PI;
+      globeControl.spinTarget = currentY + delta;
+    }
+    // Notify Skills to show tooltip
+    globeControl.onSelect?.(name);
+    // Trigger pulse
+    isPulsing.current = true;
+    pulseProgress.current = 0;
+  };
+
+  const handlePointerOver = () => {
+    setHovered(true);
+    dispatch(props.action(true));
+    dispatch(props.setOpacity(2));
+    dispatch(props.setScale([23, 23, 23]));
+  };
+
+  const handlePointerOut = () => {
+    setHovered(false);
+    dispatch(props.action(false));
+    dispatch(props.setOpacity(0.6));
+    dispatch(props.setScale([20, 20, 20]));
+  };
+
   return (
-    <group ref={sprites}>
+    <group>
       <sprite
         scale={props.scale}
         position={position}
-        onPointerOver={() => {setHovered(true); dispatch(props.action(true)); dispatch(props.setOpacity(2)); dispatch(props.setScale([23,23,23])) }}
-        onPointerOut={() => {setHovered(false); dispatch(props.action(false)); dispatch(props.setOpacity(0.6)); dispatch(props.setScale([20,20,20])) }}
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+        onClick={handleClick}
       >
-        <spriteMaterial
-          attach="material"
-          gl={{
-            alpha: true,
-            antialias: true,
-          }}
-          map={texture}
-          fog={false}
-          opacity={props.opacity}
-        />
-        Text
+        <spriteMaterial attach="material" map={texture} fog={false} opacity={props.opacity} />
       </sprite>
-      
+      <mesh ref={pulseRef} position={position}>
+        <ringGeometry args={[14, 16.5, 32]} />
+        <meshBasicMaterial color={color} transparent opacity={0} depthWrite={false} side={THREE.DoubleSide} />
+      </mesh>
     </group>
   );
-}
+};
 
-export default Sprite
-
-
-
-
-
-
-
-
-
-
-  // const spriteNewReactMap = new THREE.TextureLoader().load(reactIcon)
-  // const spriteNewHtmlMap = new THREE.TextureLoader().load(htmlIcon)
-
-  // const spriteReactMap = loader.load('../../assets/react-icon2.png');
-
-  // const spriteReactMaterial = new THREE.SpriteMaterial( { map: spriteReactMap, color: '#00ccff', fog: false } );
-  // const spriteReact = new THREE.Sprite( spriteReactMaterial );
-  // spriteReact.position.set(0, 0, 50)
-  // spriteReact.scale.set( 15, 15, 15);
+export default Sprite;

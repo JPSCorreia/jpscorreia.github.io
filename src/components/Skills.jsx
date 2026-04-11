@@ -1,149 +1,198 @@
-import React from 'react'
-import {SiCss3, SiExpress, SiHtml5, SiRedux, SiJavascript, SiNodedotjs, SiReact, SiPostgresql} from 'react-icons/si'
+import React, { useState, useEffect } from 'react'
+import {SiCss3, SiFramer, SiJavascript, SiRedux, SiTypescript, SiNodedotjs, SiReact, SiTailwindcss} from 'react-icons/si'
 import RotatingGlobe from './RotatingGlobe.jsx'
 import Scroller from './Scroller';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../features/actions'
+import { spinToAngle, globeControl } from '../features/globeControl'
+
+const TECH_INFO = {
+  'TypeScript': { color: '#3178c6', keywords: 'Static typing · Interfaces · Generics' },
+  'React.js':   { color: '#00ccff', keywords: 'Hooks · Context · Reactivity · Components' },
+  'CSS3':       { color: '#2762e9', keywords: 'Flexbox · Grid · Animations · SCSS' },
+  'Javascript': { color: '#efd81f', keywords: 'ES6+ · DOM Manipulation · Event handling' },
+  'Framer':     { color: '#ffffff', keywords: 'UI · Interactions · Animations' },
+  'Redux':      { color: '#764abc', keywords: 'State management · RTK · Thunks' },
+  'Tailwind':   { color: '#44a8b3', keywords: 'Utility-first · Responsive · Custom design' },
+  'Node.js':    { color: '#a7cc64', keywords: 'REST APIs · Middleware' },
+};
 
 const Skills = () => {
+  const [selectedTech, setSelectedTech] = useState(null);
+  const [visible, setVisible] = useState(false);
+  const [tooltipTop, setTooltipTop] = useState(50);
+
+  useEffect(() => {
+    globeControl.onSelect = (name) => {
+      setTooltipTop(globeControl.centerY);
+      setSelectedTech(name);
+      setVisible(false);
+      // slight delay so fade-in triggers after state update
+      requestAnimationFrame(() => setVisible(true));
+    };
+    return () => { globeControl.onSelect = null; };
+  }, []);
 
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
-  // const reactHighlightData = useSelector((state) => state.reactHighlightData)
+  const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
+  const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
+  const tooltipNameSize = isMobile ? '1.55rem' : isTablet ? '2.2rem' : '2.85rem';
+  const tooltipKeySize  = isMobile ? '0.78rem' : isTablet ? '1rem'   : '1.25rem';
   const reactHighlight = useSelector((state) => state.reactHighlightData)
   const htmlHighlight = useSelector((state) => state.htmlHighlightData)
   const cssHighlight = useSelector((state) => state.cssHighlightData)
+  const typescriptHighlight = useSelector((state) => state.typescriptHighlightData)
   const javascriptHighlight = useSelector((state) => state.javascriptHighlightData)
-  const expressHighlight = useSelector((state) => state.expressHighlightData)
+  const framerHighlight = useSelector((state) => state.framerHighlightData)
   const nodeHighlight = useSelector((state) => state.nodeHighlightData)
-  const postgresHighlight = useSelector((state) => state.postgresHighlightData)
+  const tailwindHighlight = useSelector((state) => state.tailwindHighlightData)
   const reduxHighlight = useSelector((state) => state.reduxHighlightData)
   const dispatch = useDispatch();
+
+  const iconSize = isTabletOrMobile ? 20 : 28;
+
+  const techClass = (highlight) =>
+    `flex items-center leading-loose tracking-wide cursor-pointer space-mono text-sm md:text-xl md:mt-2 hover:text-[#67E8F9] ${
+      highlight ? 'text-[#67E8F9]' : 'text-gray-200'
+    }`;
 
   return (
     <div
       id="skills"
-      className="w-[90%] m-auto min-h-screen pt-20 items-center flex flex-col" // w-[90%] m-auto md:h-screen p-2 flex flex-col justify-between md:pt-16 pt-12 mt-24
+      className="relative min-h-screen flex flex-col"
     >
+      {/* Canvas — fills the entire section */}
+      <div className="rotating-globe absolute inset-0">
+        <RotatingGlobe />
+      </div>
+
+      {/* Tooltip — centered over the globe, fades in on click */}
+      {selectedTech && TECH_INFO[selectedTech] && (
+        <div className="absolute inset-x-0 z-20 pointer-events-none flex justify-center" style={{ top: `${tooltipTop}%`, transform: 'translateY(-50%)' }}>
+          <div
+            style={{
+              opacity: visible ? 1 : 0,
+              transition: 'opacity 0.4s ease',
+              textAlign: 'center',
+              fontFamily: "'Space Mono', monospace",
+            }}
+          >
+            <div style={{
+              color: TECH_INFO[selectedTech].color,
+              fontSize: tooltipNameSize,
+              fontWeight: 'bold',
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              marginBottom: '8px',
+              textShadow: [
+                `-1px -1px 0 rgba(255,255,255,0.85)`,
+                ` 1px -1px 0 rgba(255,255,255,0.85)`,
+                `-1px  1px 0 rgba(255,255,255,0.85)`,
+                ` 1px  1px 0 rgba(255,255,255,0.85)`,
+                ` 0 0 16px ${TECH_INFO[selectedTech].color}`,
+                ` 0 0 32px ${TECH_INFO[selectedTech].color}66`,
+              ].join(','),
+            }}>
+              {selectedTech}
+            </div>
+            <div style={{
+              color: '#e2e8f0',
+              fontSize: tooltipKeySize,
+              letterSpacing: '0.08em',
+              textShadow: '0 1px 8px rgba(0,0,0,0.9)',
+            }}>
+              {TECH_INFO[selectedTech].keywords}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Content overlay */}
       <div
-        className="max-w-[1240px] flex-1 w-full mx-auto flex flex-col items-center justify-center"
-        id="skills-container"
+        className="relative z-10 w-[90%] max-w-[1240px] mx-auto flex-1 pt-20 flex flex-col pointer-events-none"
         data-aos="fade-left"
         data-aos-anchor="#skills"
         data-aos-duration="400"
       >
-        <div className="flex flex-col w-full">
-          <p
-            className="text-xl tracking-widest uppercase text-[#67E8F9] header-text-top text-end"
-          >
+        {/* Title — top right */}
+        <div className="flex flex-col items-end pointer-events-auto">
+          <p className="text-xl tracking-widest uppercase text-[#67E8F9] header-text-top">
             Skills
           </p>
-          <h2
-            className="mt-1 text-gray-200 text-end tracking-wide text-2xl md:text-3xl space-mono font-normal skills-top-text-2"
-          >
+          <h2 className="mt-1 text-gray-200 tracking-wide text-2xl md:text-3xl space-mono font-normal skills-top-text-2">
             What I Can Do
           </h2>
+        </div>
 
-          <div className="max-w-[1240px] w-full h-full mx-auto flex flex-col items-center main-with-globe">
-            <div
-              className="rotating-globe width-[20vw] height-[20vh]"
-            >
-              <RotatingGlobe />
+        {/* Spacer — pushes list to bottom */}
+        <div className="flex-1" />
+
+        {/* Tech list — bottom center */}
+        <div className="pb-6 flex flex-col items-center pointer-events-auto">
+          <div
+            className="text-sm md:text-xl mb-3 space-mono tracking-wide skills-text text-gray-200"
+          >
+            Experienced with developing in:
+          </div>
+          <div
+            className="flex flex-row skill-icons-container"
+          >
+            <div className="flex flex-col mr-4 md:mr-8">
+              <span onClick={() => { spinToAngle(-Math.PI / 4); globeControl.onSelect?.('TypeScript'); }} onMouseEnter={() => { dispatch(actions.typescriptOpacity(2)); dispatch(actions.typescriptScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.typescriptOpacity(0.6)); dispatch(actions.typescriptScale([20,20,20]))}} className={techClass(typescriptHighlight)}>
+                <SiTypescript className="mr-2" color="#3178c6" size={iconSize} />
+                TypeScript
+              </span>
+              <span onClick={() => { spinToAngle(0); globeControl.onSelect?.('React.js'); }} onMouseEnter={() => { dispatch(actions.reactOpacity(2)); dispatch(actions.reactScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.reactOpacity(0.6)); dispatch(actions.reactScale([20,20,20]))}} className={techClass(reactHighlight)}>
+                <SiReact className="mr-2" color="#61dafb" size={iconSize} />
+                React.js
+              </span>
+              <span onClick={() => { spinToAngle(-Math.PI / 2); globeControl.onSelect?.('CSS3'); }} onMouseEnter={() => { dispatch(actions.cssOpacity(2)); dispatch(actions.cssScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.cssOpacity(0.6)); dispatch(actions.cssScale([20,20,20]))}} className={techClass(cssHighlight)}>
+                <SiCss3 className="mr-2" color="#2762e9" size={iconSize} />
+                CSS3
+              </span>
+              <span onClick={() => { spinToAngle(-3 * Math.PI / 4); globeControl.onSelect?.('Javascript'); }} onMouseEnter={() => { dispatch(actions.javascriptOpacity(2)); dispatch(actions.javascriptScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.javascriptOpacity(0.6)); dispatch(actions.javascriptScale([20,20,20]))}} className={techClass(javascriptHighlight)}>
+                <SiJavascript className="mr-2" color="#efd81f" size={iconSize} />
+                JavaScript
+              </span>
             </div>
-            <div
-              className="text-md md:text-2xl mt-2 space-mono tracking-wide skills-text md:mt-12"
-              data-aos="fade-left"
-              data-aos-anchor="#skills"
-              data-aos-duration="400"
-            >
-              Experienced with developing in: 
+            <div className="flex flex-col">
+              <span onClick={() => { spinToAngle(3 * Math.PI / 4); globeControl.onSelect?.('Framer'); }} onMouseEnter={() => { dispatch(actions.framerOpacity(2)); dispatch(actions.framerScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.framerOpacity(0.6)); dispatch(actions.framerScale([20,20,20]))}} className={techClass(framerHighlight)}>
+                <SiFramer className="mr-2" color="#ffffff" size={iconSize} />
+                Framer
+              </span>
+              <span onClick={() => { spinToAngle(Math.PI / 4); globeControl.onSelect?.('Redux'); }} onMouseEnter={() => { dispatch(actions.reduxOpacity(2)); dispatch(actions.reduxScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.reduxOpacity(0.6)); dispatch(actions.reduxScale([20,20,20]))}} className={techClass(reduxHighlight)}>
+                <SiRedux className="mr-2" color="#764abc" size={iconSize} />
+                Redux
+              </span>
+              <span onClick={() => { spinToAngle(Math.PI / 2); globeControl.onSelect?.('Tailwind'); }} onMouseEnter={() => { dispatch(actions.tailwindOpacity(2)); dispatch(actions.tailwindScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.tailwindOpacity(0.6)); dispatch(actions.tailwindScale([20,20,20]))}} className={techClass(tailwindHighlight)}>
+                <SiTailwindcss className="mr-2" color="#44a8b3" size={iconSize} />
+                Tailwind
+              </span>
+              <span onClick={() => { spinToAngle(Math.PI); globeControl.onSelect?.('Node.js'); }} onMouseEnter={() => { dispatch(actions.nodeOpacity(2)); dispatch(actions.nodeScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.nodeOpacity(0.6)); dispatch(actions.nodeScale([20,20,20]))}} className={techClass(nodeHighlight)}>
+                <SiNodedotjs className="mr-2" color="#43853d" size={iconSize} />
+                Node.js
+              </span>
             </div>
-            <div
-              className="flex flex-row mt-3 md:mt-8 md:flex-row skill-icons-container"
-              data-aos="fade-left"
-              data-aos-anchor="#skills"
-              data-aos-duration="400"
-            >
-              <div className="flex flex-col mr-1">
-                <div className="md:py-2 text-start text-gray-200 flex flex-col md:flex-col mx-auto md:mr-12">
-                  <span onMouseEnter={() => { dispatch(actions.htmlOpacity(2)); dispatch(actions.htmlScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.htmlOpacity(0.6)); dispatch(actions.htmlScale([20,20,20]))}} className={htmlHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer space-mono text-md md:text-2xl" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer space-mono text-md md:text-2xl"}>
-                    <SiHtml5
-                      className="mr-2"
-                      color="#dd4b25"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    HTML5
-                  </span>
-                  <span onMouseEnter={() => { dispatch(actions.cssOpacity(2)); dispatch(actions.cssScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.cssOpacity(0.6)); dispatch(actions.cssScale([20,20,20]))}} className={cssHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer space-mono text-md md:text-2xl md:mt-2" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer only://#region space-mono text-md md:text-2xl md:mt-2" }>
-                    <SiCss3
-                      className="mr-2"
-                      color="#2762e9"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    CSS3
-                  </span>
-                  <span onMouseEnter={() => { dispatch(actions.javascriptOpacity(2)); dispatch(actions.javascriptScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.javascriptOpacity(0.6)); dispatch(actions.javascriptScale([20,20,20]))}} className={javascriptHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center justify-start mr-3 leading-loose tracking-wide space-mono text-md md:text-2xl md:mt-2" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer only://#region space-mono text-md md:text-2xl md:mt-2" }>
-                    <SiJavascript
-                      className="mr-2"
-                      color="#efd81f"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    Javascript
-                  </span>
-                  <span onMouseEnter={() => { dispatch(actions.nodeOpacity(2)); dispatch(actions.nodeScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.nodeOpacity(0.6)); dispatch(actions.nodeScale([20,20,20]))}} className={nodeHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center justify-start mr-3 leading-loose tracking-wide space-mono text-md md:text-2xl md:mt-2" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer only://#region space-mono text-md md:text-2xl md:mt-2" }>
-                    <SiNodedotjs
-                      className="mr-2"
-                      color="#43853d"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    Node.js
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col ml-1">
-                <div className="md:py-2 text-start text-gray-200 flex flex-col md:flex-col mx-auto">
-                  <span onMouseEnter={() => { dispatch(actions.reactOpacity(2)); dispatch(actions.reactScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.reactOpacity(0.6)); dispatch(actions.reactScale([20,20,20]))}} className={reactHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide space-mono text-md md:text-2xl" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer space-mono text-md md:text-2xl" }>
-                    <SiReact
-                      className="mr-2"
-                      color="#61dafb"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    React.js
-                  </span>
-                  <span onMouseEnter={() => { dispatch(actions.reduxOpacity(2)); dispatch(actions.reduxScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.reduxOpacity(0.6)); dispatch(actions.reduxScale([20,20,20]))}} className={reduxHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide space-mono text-md md:text-2xl md:mt-2" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer only://#region space-mono text-md md:text-2xl md:mt-2" }>
-                    <SiRedux
-                      className="mr-2"
-                      color="#764abc"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    Redux
-                  </span>
-                  <span onMouseEnter={() => { dispatch(actions.expressOpacity(2)); dispatch(actions.expressScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.expressOpacity(0.6)); dispatch(actions.expressScale([20,20,20]))}} className={expressHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide space-mono text-md md:text-2xl md:mt-2" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer only://#region space-mono text-md md:text-2xl md:mt-2" }>
-                    <SiExpress
-                      className="mr-2"
-                      color="#ffffff"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    Express.js
-                  </span>
-                  <span onMouseEnter={() => { dispatch(actions.postgresOpacity(2)); dispatch(actions.postgresScale([23,23,23]))}} onMouseLeave={ () => { dispatch(actions.postgresOpacity(0.6)); dispatch(actions.postgresScale([20,20,20]))}} className={postgresHighlight? "flex text-[#67E8F9] hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide space-mono text-md md:text-2xl md:mt-2" : "flex hover:text-[#67E8F9] items-center mr-3 leading-loose tracking-wide cursor-pointer only://#region space-mono text-md md:text-2xl md:mt-2" }>
-                    <SiPostgresql
-                      className="mr-2"
-                      color="#31648d"
-                      size={isTabletOrMobile ? 24 : 32}
-                    />
-                    PostgreSQL
-                  </span>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div className="mt-3 text-xs md:text-sm space-mono tracking-widest text-gray-200 pointer-events-auto">
+            and much more.
           </div>
         </div>
       </div>
-      <Scroller scrollerID="skills-scroller" class="page-scroller" link="#projects" text="projects" AOSAnimation="fade-up" AOSAnchor="#after-about" AOSOffset="-50" AOSAnchorPlacement="bottom-bottom"/>
+
+      <Scroller
+        scrollerID="skills-scroller"
+        class="page-scroller relative z-10"
+        link="#projects"
+        text="projects"
+        AOSAnimation="fade-up"
+        AOSAnchor="#after-about"
+        AOSOffset="-50"
+        AOSAnchorPlacement="bottom-bottom"
+      />
     </div>
   );
 }
 
 export default Skills
-

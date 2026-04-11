@@ -140,8 +140,8 @@ textarea:focus::placeholder {
 }
 
 .rotating-globe {
-  width: 100vw;
-  height: 46vh;
+  width: 100%;
+  height: 100%;
 }
 
 .about-countainer {
@@ -176,7 +176,6 @@ textarea:focus::placeholder {
 
 // --- Short screens (laptops, max-height 750px) ---
 @media (max-height: 750px) {
-  .rotating-globe { height: 32vh !important; }
   .skills-text { margin-top: 0.5rem !important; font-size: 1rem !important; }
   .skill-icons-container { margin-top: 0.25rem !important; }
   .skills-top-text-2 { margin-bottom: 0.25rem; }
@@ -192,7 +191,6 @@ textarea:focus::placeholder {
 
 // --- Very short screens (landscape phones, Nest Hub, max-height 640px) ---
 @media (max-height: 640px) {
-  .rotating-globe { height: 26vh !important; }
   .main-with-globe { flex-direction: row; }
   .skills-text { display: none; }
   .home-intro { margin-top: 6rem !important; }
@@ -201,7 +199,6 @@ textarea:focus::placeholder {
 
 // --- Tablets (641px–1024px width) ---
 @media (min-width: 641px) and (max-width: 1024px) {
-  .rotating-globe { height: 44vh !important; }
   .about-container-1 { margin-top: 2rem; }
   #contact-complete-form { margin-top: 2rem; padding: 1.5rem 1rem; }
   .send-button { margin-top: 2rem; margin-bottom: 0.5rem; }
@@ -211,7 +208,6 @@ textarea:focus::placeholder {
 @media (max-width: 640px) {
   .sidebar-button { padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 1.3rem; }
   .sidebar-navbar { margin-top: 0; }
-  .rotating-globe { height: 36vh !important; }
   .skills-text { margin-top: 1rem !important; font-size: 0.9rem !important; }
   .skill-icons-container { font-size: 0.9rem; }
   .skills-top-text-2 { margin-bottom: 0.5rem; }
@@ -232,12 +228,9 @@ textarea:focus::placeholder {
 
 // --- Small mobile (max-width 480px) ---
 @media (max-width: 480px) {
-  .home-text { font-size: 2rem; }
   #home-container-1 { margin-top: 0; }
-  #home-text-1 { font-size: 1rem; margin-bottom: 0.75rem; }
-  #home-text-2 { font-size: 2rem; margin-top: 0; }
-  #home-text-3 { font-size: 2rem; }
-  #home-text-4 { font-size: 1rem; }
+  #home-text-1 { margin-bottom: 0.75rem; }
+  #home-text-2 { margin-top: 0; }
   #home-text-5 { margin-top: 0; }
   .about-container-1 { margin-top: 0.75rem; }
   .about-text-1, .about-text-2, .about-text-3 { font-size: 0.9rem; line-height: 1.25rem; }

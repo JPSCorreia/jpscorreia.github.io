@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react'
-import {SiExpress, SiReact, SiPostgresql} from 'react-icons/si'
+import {SiTypescript, SiReact, SiFramer} from 'react-icons/si'
 import Scroller from './Scroller'
 
 const Main = () => {
@@ -24,7 +24,7 @@ const Main = () => {
               Hi, my name is{' '}
             </div>
             <div
-              className=" text-5xl lg:text-6xl tracking-wider home-text mt-3 text-start text-[#ffffff]"
+              className="text-2xl sm:text-4xl lg:text-5xl tracking-wider home-text mt-3 text-start text-[#ffffff]"
               id="home-text-2"
               data-aos="fade-in"
               data-aos-anchor="#home"
@@ -35,14 +35,14 @@ const Main = () => {
               <span className="home-text text-gray-200">,</span>
             </div>
             <h1
-              className="mt-2 text-start text-5xl lg:text-6xl whitespace-nowrap home-text tracking-wider"
+              className="mt-2 text-start text-2xl sm:text-4xl lg:text-5xl home-text tracking-wider"
               id="home-text-3"
               data-aos="fade-in"
               data-aos-anchor="#home"
               data-aos-duration="600"
               data-aos-delay="400"
             >
-              Web Developer.
+              I build things for the web.
             </h1>
           </div>
           <div
@@ -57,20 +57,20 @@ const Main = () => {
                 <span id="home-text-4" className="flex items-center whitespace-nowrap leading-loose tracking-wide text-lg md:text-2xl space-mono ">
                   Freelance Frontend Developer
                 </span>
-                <div className="flex flex-col md:flex-row mt-3 home-skills-container">
+                <div className="flex flex-col md:flex-row mt-3 gap-2 md:gap-0 home-skills-container">
+                  <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
+                    <SiTypescript className="mr-3" color="#3178c6" size={32} />
+                    TypeScript
+                    <span className="hidden md:inline mx-3 ">-</span>
+                  </span>
                   <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
                     <SiReact className="mr-3" color="#61dafb" size={32} />
                     React.js
                     <span className="hidden md:inline mx-3 ">-</span>
                   </span>
-                  <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
-                    <SiExpress className="mr-3" color="#ffffff" size={32} />
-                    Express.js
-                    <span className="hidden md:inline mx-3 ">-</span>
-                  </span>
                   <span className="flex items-center justify-start leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
-                    <SiPostgresql className="mr-3" color="#31648d" size={32} />
-                    PostgreSQL
+                    <SiFramer className="mr-3" color="#ffffff" size={32} />
+                    Framer
                   </span>
                 </div>
               </div>
