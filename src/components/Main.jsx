@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
 import {SiTypescript, SiReact, SiFramer} from 'react-icons/si'
 import Scroller from './Scroller'
 
@@ -61,12 +60,12 @@ const Main = () => {
                   <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
                     <SiTypescript className="mr-3" color="#3178c6" size={32} />
                     TypeScript
-                    <span className="hidden md:inline mx-3 ">-</span>
+                    <span className="hidden md:inline mx-3 text-5xl">·</span>
                   </span>
                   <span className="flex items-center leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
                     <SiReact className="mr-3" color="#61dafb" size={32} />
                     React.js
-                    <span className="hidden md:inline mx-3 ">-</span>
+                    <span className="hidden md:inline mx-3 text-5xl">·</span>
                   </span>
                   <span className="flex items-center justify-start leading-loose tracking-wide text-lg md:text-2xl space-mono text-gray-200">
                     <SiFramer className="mr-3" color="#ffffff" size={32} />

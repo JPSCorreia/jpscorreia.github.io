@@ -3,6 +3,7 @@ import tldreddit from '../assets/projects/TLDReddit-logo3.png';
 import emporium from '../assets/projects/emporium-logo4.png';
 import biorama from '../assets/projects/biorama-logo.webp';
 import lifecoach from '../assets/projects/lifecoach-logo.png';
+import rauva from '../assets/projects/rauva-logo.webp';
 // import github from '../assets/projects/github-projects-logo.png';
 
 import Scroller from './Scroller';
@@ -72,6 +73,19 @@ const Projects = () => {
                             backgroundImg={tldreddit}
                             projectUrl="tldreddit"
                         />
+                        <div className="md:col-span-2 md:flex md:justify-center">
+                            <div className="md:w-1/2">
+                                <ProjectItem
+                                    title="Rauva"
+                                    projectType="Freelance Project"
+                                    navlink="/rauva"
+                                    isNavlink={true}
+                                    backgroundImg={rauva}
+                                    projectUrl="rauva"
+                                    imgClassName="max-h-[40px] max-w-[160px] md:max-h-[70px] md:max-w-[280px]"
+                                />
+                            </div>
+                        </div>
 
                         {/* <ProjectItem
                             title="GitHub Projects"

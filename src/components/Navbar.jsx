@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { FaHome, FaUserCircle, FaGraduationCap, FaEye } from 'react-icons/fa';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { GrMail } from 'react-icons/gr';
@@ -109,17 +108,11 @@ function Navbar() {
                             onClick={handleNav}
                             className="lg:hidden mr-1.5 sm:mr-2 md:mr-4 cursor-pointer p-2 mt-6 hover:scale-110 hover:text-[#67E8F9] ease-in duration-100"
                         >
-                            {nav ? (
-                                <AiOutlineClose
-                                    className="ease-in duration-200"
-                                    size={32}
-                                />
-                            ) : (
-                                <AiOutlineMenu
-                                    className="ease-in duration-200"
-                                    size={32}
-                                />
-                            )}
+                            <div className="w-8 h-6 flex flex-col justify-between">
+                                <span className={`block h-0.5 w-8 bg-current transform transition-all duration-300 origin-center ${nav ? 'rotate-45 translate-y-[11px]' : ''}`} />
+                                <span className={`block h-0.5 w-8 bg-current transition-all duration-300 ${nav ? 'opacity-0 scale-x-0' : ''}`} />
+                                <span className={`block h-0.5 w-8 bg-current transform transition-all duration-300 origin-center ${nav ? '-rotate-45 -translate-y-[11px]' : ''}`} />
+                            </div>
                         </div>
                     </div>
                 </div>

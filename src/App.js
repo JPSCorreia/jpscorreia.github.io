@@ -12,6 +12,7 @@ import TLDRedditBackground from './assets/projects/tldreddit-full.png';
 import EmporiumBackground from './assets/projects/emporium-full.png';
 import LifeCoachBackground from './assets/projects/lifecoach-full.png';
 import BioramaBackground from './assets/projects/biorama-full.png';
+import RauvaBackground from './assets/projects/rauva-full.png';
 import {
     SiJest,
     SiReactrouter,
@@ -30,6 +31,10 @@ import {
     SiSqlalchemy,
     SiMobx,
     SiInertia,
+    SiFramer,
+    SiJavascript,
+    SiFigma,
+    SiHubspot,
 } from 'react-icons/si';
 import { GrMysql } from 'react-icons/gr';
 import { DiSass } from 'react-icons/di';
@@ -72,7 +77,7 @@ function App() {
                                 element={
                                     <ProjectType
                                         backgroundImageURL={EmporiumBackground}
-                                        navLinkToBack="/lifecoach"
+                                        navLinkToBack="/rauva"
                                         navLinkToNext="/tldreddit"
                                         AOSAnchor="#emporium"
                                         projectId="emporium"
@@ -294,7 +299,7 @@ function App() {
                                     <ProjectType
                                         backgroundImageURL={LifeCoachBackground}
                                         navLinkToBack="/biorama"
-                                        navLinkToNext="/emporium"
+                                        navLinkToNext="/rauva"
                                         AOSAnchor="#lifecoach"
                                         projectId="lifecoach"
                                         projectTitle="Life Coach"
@@ -356,6 +361,69 @@ function App() {
                                         ]}
                                         projectParagraphOne="Life Coach is an AI-powered assistant that uses Large Language Model technology to interact with users in natural language and assist in organizing their personal and professional lives. It is designed to help with daily life tasks, goals, events, and also proactively engage with them based on their needs."
                                         projectParagraphTwo="Developed in Python using Flask with SQLAlchemy, the user can register and log in to the application and have a conversation with Life Coach. LifeCoach supports automated CRUD operations just by analyzing data models and descriptions, uses React.js as a client, a MSSQL Server for data storage and can use different LLM service providers such as OpenAI, Anthropic and Google."
+                                    />
+                                }
+                            />
+                            <Route
+                                exact
+                                path="/rauva"
+                                element={
+                                    <ProjectType
+                                        backgroundImageURL={RauvaBackground}
+                                        navLinkToBack="/lifecoach"
+                                        navLinkToNext="/emporium"
+                                        AOSAnchor="#rauva"
+                                        projectId="rauva"
+                                        projectTitle="Rauva"
+                                        iconArray={[
+                                            {
+                                                icon: (
+                                                    <SiFramer
+                                                        color="#ffffff"
+                                                        size={24}
+                                                    />
+                                                ),
+                                                name: 'Framer',
+                                            },
+                                            {
+                                                icon: (
+                                                    <SiReact
+                                                        color="#61dafb"
+                                                        size={24}
+                                                    />
+                                                ),
+                                                name: 'React.js',
+                                            },
+                                            {
+                                                icon: (
+                                                    <SiJavascript
+                                                        color="#efd81f"
+                                                        size={24}
+                                                    />
+                                                ),
+                                                name: 'JavaScript',
+                                            },
+                                            {
+                                                icon: (
+                                                    <SiFigma
+                                                        color="#a259ff"
+                                                        size={24}
+                                                    />
+                                                ),
+                                                name: 'Figma',
+                                            },
+                                            {
+                                                icon: (
+                                                    <SiHubspot
+                                                        color="#ff7a59"
+                                                        size={24}
+                                                    />
+                                                ),
+                                                name: 'HubSpot',
+                                            },
+                                        ]}
+                                        projectParagraphOne="Rauva is a Portuguese fintech platform aimed at simplifying business banking and financial management for entrepreneurs and small businesses. As a freelance frontend developer, I contributed to building and maintaining several features across their web platform, working closely with the design and product teams in a fast-paced startup environment."
+                                        projectParagraphTwo="Work included developing interactive multi-step forms for company creation workflows, an accounting simulator, and various UI components and landing pages. Development was done using Framer (React.js and Javascript), with design collaboration via Figma and marketing integrations via HubSpot."
                                     />
                                 }
                             />
