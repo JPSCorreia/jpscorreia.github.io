@@ -2,7 +2,9 @@ export const globeControl = {
   spinRef: null,
   spinTarget: null,
   onSelect: null, // callback registered by Skills to receive selected tech name
-  centerY: 50,   // projected globe center as % from top of section
+  centerX: 50,   // projected globe center as % from left of canvas
+  centerY: 50,   // projected globe center as % from top of canvas
+  pulseMap: {},  // name → pulse trigger fn, registered by each Sprite
 };
 
 export const spinToAngle = (initialAngle) => {

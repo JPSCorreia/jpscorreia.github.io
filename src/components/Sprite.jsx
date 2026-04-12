@@ -17,6 +17,14 @@ const Sprite = ({ name, url, position, color, spinRef, ...props }) => {
     document.body.style.cursor = hovered ? 'pointer' : 'auto';
   }, [hovered]);
 
+  useEffect(() => {
+    globeControl.pulseMap[name] = () => {
+      isPulsing.current = true;
+      pulseProgress.current = 0;
+    };
+    return () => { delete globeControl.pulseMap[name]; };
+  }, [name]);
+
   useFrame((state) => {
     if (!pulseRef.current) return;
     pulseRef.current.lookAt(state.camera.position);

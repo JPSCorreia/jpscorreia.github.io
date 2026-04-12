@@ -143,7 +143,7 @@ const ProjectType = (props) => {
                             iconArray={props.iconArray}
                         />
                         <div
-                            className="flex flex-row w-[70%]"
+                            className="flex flex-row w-[70%] project-action-buttons"
                             data-aos="fade-up"
                             data-aos-anchor={props.AOSAnchor}
                             data-aos-duration="400"

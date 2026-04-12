@@ -16,13 +16,13 @@ import { useSelector } from 'react-redux';
 import { actions } from '../features/actions';
 import { globeControl } from '../features/globeControl';
 
-function CameraController({ z }) {
+function CameraController({ z, lookAtY = -22 }) {
   const { camera } = useThree();
   useEffect(() => {
     camera.position.set(0, 35, z);
-    camera.lookAt(0, -22, 0);
+    camera.lookAt(0, lookAtY, 0);
     camera.updateProjectionMatrix();
-  }, [camera, z]);
+  }, [camera, z, lookAtY]);
   return null;
 }
 
@@ -32,6 +32,7 @@ function GlobeCenterProjector() {
   useFrame(() => {
     v.set(0, 0, 0);
     v.project(camera);
+    globeControl.centerX = (v.x + 1) / 2 * 100;
     globeControl.centerY = (1 - (v.y + 1) / 2) * 100;
   });
   return null;
@@ -55,13 +56,24 @@ function SpinController({ spinRef }) {
   return null;
 }
 
-function RotatingGlobe() {
+function RotatingGlobe({ sideLayout = false }) {
   const spinRef = useRef();
   globeControl.spinRef = spinRef;
 
-  const isMobile  = useMediaQuery({ query: '(max-width: 640px)' });
-  const isTablet  = useMediaQuery({ query: '(max-width: 1024px)' });
-  const cameraZ   = isMobile ? 360 : isTablet ? 300 : 240;
+  const isMobile      = useMediaQuery({ query: '(max-width: 640px)' });
+  const isTablet      = useMediaQuery({ query: '(max-width: 1024px)' });
+  const isShortScreen   = useMediaQuery({ query: '(max-height: 1100px)' });
+  const isShorterScreen = useMediaQuery({ query: '(max-height: 900px)' });
+  const isVeryShort     = useMediaQuery({ query: '(max-height: 750px)' });
+  const isExtremeShort  = useMediaQuery({ query: '(max-height: 650px)' });
+  const baseZ  = isMobile ? 290 : isTablet ? 300 : 240;
+  const cameraZ = sideLayout ? baseZ
+    : isMobile       ? baseZ
+    : isExtremeShort ? baseZ + 320
+    : isVeryShort    ? baseZ + 240
+    : isShorterScreen? baseZ + 160
+    : isShortScreen  ? baseZ + 80
+    : baseZ;
 
   const color2 = new THREE.Color('#22D3F8');
   const TILT = THREE.MathUtils.degToRad(18);
@@ -106,7 +118,7 @@ function RotatingGlobe() {
       <directionalLight color={color2} position={[1,  0, 0]} intensity={1.25} />
       <directionalLight color={color2} position={[-1, 0, 0]} intensity={1.25} />
 
-      <CameraController z={cameraZ} />
+      <CameraController z={cameraZ} lookAtY={sideLayout ? -5 : -22} />
       <SpinController spinRef={spinRef} />
       <GlobeCenterProjector />
 

@@ -28,7 +28,6 @@ const Skills = () => {
       setTooltipTop(globeControl.centerY);
       setSelectedTech(name);
       setVisible(false);
-      // slight delay so fade-in triggers after state update
       requestAnimationFrame(() => setVisible(true));
     };
     return () => { globeControl.onSelect = null; };
@@ -37,76 +36,163 @@ const Skills = () => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
   const isTablet = useMediaQuery({ query: '(max-width: 1024px)' });
-  const tooltipNameSize = isMobile ? '1.55rem' : isTablet ? '2.2rem' : '2.85rem';
-  const tooltipKeySize  = isMobile ? '0.78rem' : isTablet ? '1rem'   : '1.25rem';
-  const reactHighlight = useSelector((state) => state.reactHighlightData)
-  const htmlHighlight = useSelector((state) => state.htmlHighlightData)
-  const cssHighlight = useSelector((state) => state.cssHighlightData)
+  const isShortScreen     = useMediaQuery({ query: '(max-height: 900px)' });
+  const isShortWideScreen = useMediaQuery({ query: '(max-height: 900px) and (min-width: 1024px)' });
+  const isMediumHeight    = useMediaQuery({ query: '(max-height: 1200px) and (min-height: 901px) and (min-width: 1025px)' });
+
+  const tooltipNameSize = isShortScreen ? '1.3rem' : isMobile ? '1.1rem' : isTablet ? '1.5rem' : isMediumHeight ? '2rem' : '2.85rem';
+  const tooltipKeySize  = isShortScreen ? '0.62rem' : isMobile ? '0.58rem' : isTablet ? '0.72rem' : isMediumHeight ? '0.9rem' : '1.25rem';
+
   const typescriptHighlight = useSelector((state) => state.typescriptHighlightData)
+  const cssHighlight        = useSelector((state) => state.cssHighlightData)
+  const reactHighlight      = useSelector((state) => state.reactHighlightData)
   const javascriptHighlight = useSelector((state) => state.javascriptHighlightData)
-  const framerHighlight = useSelector((state) => state.framerHighlightData)
-  const nodeHighlight = useSelector((state) => state.nodeHighlightData)
-  const tailwindHighlight = useSelector((state) => state.tailwindHighlightData)
-  const reduxHighlight = useSelector((state) => state.reduxHighlightData)
+  const framerHighlight     = useSelector((state) => state.framerHighlightData)
+  const nodeHighlight       = useSelector((state) => state.nodeHighlightData)
+  const tailwindHighlight   = useSelector((state) => state.tailwindHighlightData)
+  const reduxHighlight      = useSelector((state) => state.reduxHighlightData)
   const dispatch = useDispatch();
 
-  const iconSize = isTabletOrMobile ? 20 : 28;
+  const iconSize = (isTabletOrMobile || isShortScreen) ? 20 : 28;
 
   const techClass = (highlight) =>
     `flex items-center leading-loose tracking-wide cursor-pointer space-mono text-sm md:text-xl md:mt-2 hover:text-[#67E8F9] ${
       highlight ? 'text-[#67E8F9]' : 'text-gray-200'
     }`;
 
-  return (
+  const tooltip = selectedTech && TECH_INFO[selectedTech] && (
     <div
-      id="skills"
-      className="relative min-h-screen flex flex-col"
+      className="absolute inset-x-0 z-20 pointer-events-none flex justify-center"
+      style={{ top: `${tooltipTop}%`, transform: 'translateY(-50%)' }}
     >
+      <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease', textAlign: 'center', fontFamily: "'Space Mono', monospace" }}>
+        <div style={{
+          color: TECH_INFO[selectedTech].color,
+          fontSize: tooltipNameSize,
+          fontWeight: 'bold',
+          letterSpacing: '0.15em',
+          textTransform: 'uppercase',
+          marginBottom: '8px',
+          textShadow: [
+            `-1px -1px 0 rgba(255,255,255,0.85)`,
+            ` 1px -1px 0 rgba(255,255,255,0.85)`,
+            `-1px  1px 0 rgba(255,255,255,0.85)`,
+            ` 1px  1px 0 rgba(255,255,255,0.85)`,
+            ` 0 0 16px ${TECH_INFO[selectedTech].color}`,
+            ` 0 0 32px ${TECH_INFO[selectedTech].color}66`,
+          ].join(','),
+        }}>
+          {selectedTech}
+        </div>
+        <div style={{
+          color: '#e2e8f0',
+          fontSize: tooltipKeySize,
+          fontWeight: '600',
+          letterSpacing: '0.08em',
+          textShadow: '0 1px 8px rgba(0,0,0,0.9)',
+        }}>
+          {TECH_INFO[selectedTech].keywords}
+        </div>
+      </div>
+    </div>
+  );
+
+  const techList = (
+    <div className="flex flex-row skill-icons-container">
+      <div className="flex flex-col mr-4 md:mr-8">
+        <span onClick={() => { spinToAngle(-Math.PI / 4); globeControl.onSelect?.('TypeScript'); globeControl.pulseMap['TypeScript']?.(); }} onMouseEnter={() => { dispatch(actions.typescriptOpacity(2)); dispatch(actions.typescriptScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.typescriptOpacity(0.6)); dispatch(actions.typescriptScale([20,20,20]))}} className={techClass(typescriptHighlight)}>
+          <SiTypescript className="mr-2" color="#3178c6" size={iconSize} />TypeScript
+        </span>
+        <span onClick={() => { spinToAngle(0); globeControl.onSelect?.('React.js'); globeControl.pulseMap['React.js']?.(); }} onMouseEnter={() => { dispatch(actions.reactOpacity(2)); dispatch(actions.reactScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.reactOpacity(0.6)); dispatch(actions.reactScale([20,20,20]))}} className={techClass(reactHighlight)}>
+          <SiReact className="mr-2" color="#61dafb" size={iconSize} />React.js
+        </span>
+        <span onClick={() => { spinToAngle(-Math.PI / 2); globeControl.onSelect?.('CSS3'); globeControl.pulseMap['CSS3']?.(); }} onMouseEnter={() => { dispatch(actions.cssOpacity(2)); dispatch(actions.cssScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.cssOpacity(0.6)); dispatch(actions.cssScale([20,20,20]))}} className={techClass(cssHighlight)}>
+          <SiCss3 className="mr-2" color="#2762e9" size={iconSize} />CSS3
+        </span>
+        <span onClick={() => { spinToAngle(-3 * Math.PI / 4); globeControl.onSelect?.('Javascript'); globeControl.pulseMap['Javascript']?.(); }} onMouseEnter={() => { dispatch(actions.javascriptOpacity(2)); dispatch(actions.javascriptScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.javascriptOpacity(0.6)); dispatch(actions.javascriptScale([20,20,20]))}} className={techClass(javascriptHighlight)}>
+          <SiJavascript className="mr-2" color="#efd81f" size={iconSize} />JavaScript
+        </span>
+      </div>
+      <div className="flex flex-col">
+        <span onClick={() => { spinToAngle(3 * Math.PI / 4); globeControl.onSelect?.('Framer'); globeControl.pulseMap['Framer']?.(); }} onMouseEnter={() => { dispatch(actions.framerOpacity(2)); dispatch(actions.framerScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.framerOpacity(0.6)); dispatch(actions.framerScale([20,20,20]))}} className={techClass(framerHighlight)}>
+          <SiFramer className="mr-2" color="#ffffff" size={iconSize} />Framer
+        </span>
+        <span onClick={() => { spinToAngle(Math.PI / 4); globeControl.onSelect?.('Redux'); globeControl.pulseMap['Redux']?.(); }} onMouseEnter={() => { dispatch(actions.reduxOpacity(2)); dispatch(actions.reduxScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.reduxOpacity(0.6)); dispatch(actions.reduxScale([20,20,20]))}} className={techClass(reduxHighlight)}>
+          <SiRedux className="mr-2" color="#764abc" size={iconSize} />Redux
+        </span>
+        <span onClick={() => { spinToAngle(Math.PI / 2); globeControl.onSelect?.('Tailwind'); globeControl.pulseMap['Tailwind']?.(); }} onMouseEnter={() => { dispatch(actions.tailwindOpacity(2)); dispatch(actions.tailwindScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.tailwindOpacity(0.6)); dispatch(actions.tailwindScale([20,20,20]))}} className={techClass(tailwindHighlight)}>
+          <SiTailwindcss className="mr-2" color="#44a8b3" size={iconSize} />Tailwind
+        </span>
+        <span onClick={() => { spinToAngle(Math.PI); globeControl.onSelect?.('Node.js'); globeControl.pulseMap['Node.js']?.(); }} onMouseEnter={() => { dispatch(actions.nodeOpacity(2)); dispatch(actions.nodeScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.nodeOpacity(0.6)); dispatch(actions.nodeScale([20,20,20]))}} className={techClass(nodeHighlight)}>
+          <SiNodedotjs className="mr-2" color="#43853d" size={iconSize} />Node.js
+        </span>
+      </div>
+    </div>
+  );
+
+  if (isShortWideScreen) {
+    return (
+      <div id="skills" className="relative min-h-screen flex flex-row">
+        {/* Title — same w-[90%] max-w-[1240px] container as all other sections */}
+        <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none" style={{ paddingTop: '84px' }}>
+          <div className="w-[90%] max-w-[1240px] mx-auto flex justify-end">
+            <div
+              className="flex flex-col items-end pointer-events-auto"
+              data-aos="fade-left"
+              data-aos-anchor="#skills"
+              data-aos-duration="400"
+            >
+              <p className="text-xl tracking-widest uppercase text-[#67E8F9] header-text-top">Skills</p>
+              <h2 className="mt-1 text-gray-200 tracking-wide text-2xl space-mono font-normal">What I Can Do</h2>
+            </div>
+          </div>
+        </div>
+
+        {/* Left half — globe + tooltip share the same div so inset-x-0 aligns correctly */}
+        <div className="relative w-1/2 h-screen">
+          <RotatingGlobe sideLayout={true} />
+          {tooltip}
+        </div>
+
+        {/* Right half — skills list vertically centered */}
+        <div
+          className="w-1/2 h-screen flex flex-col items-start justify-center pl-[8%] pr-4 z-10"
+          data-aos="fade-left"
+          data-aos-anchor="#skills"
+          data-aos-duration="400"
+        >
+          <div className="flex flex-col items-start">
+            <div className="text-sm mb-3 space-mono tracking-wide text-gray-200">
+              Experienced with developing in:
+            </div>
+            {techList}
+            <div className="mt-2 text-xs space-mono tracking-widest text-gray-200">and much more.</div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-10">
+          <Scroller
+            scrollerID="skills-scroller"
+            link="#projects"
+            text="projects"
+            AOSAnimation="fade-up"
+            AOSAnchor="#after-about"
+            AOSOffset="-50"
+            AOSAnchorPlacement="bottom-bottom"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div id="skills" className="relative min-h-screen flex flex-col">
       {/* Canvas — fills the entire section */}
       <div className="rotating-globe absolute inset-0">
         <RotatingGlobe />
       </div>
 
-      {/* Tooltip — centered over the globe, fades in on click */}
-      {selectedTech && TECH_INFO[selectedTech] && (
-        <div className="absolute inset-x-0 z-20 pointer-events-none flex justify-center" style={{ top: `${tooltipTop}%`, transform: 'translateY(-50%)' }}>
-          <div
-            style={{
-              opacity: visible ? 1 : 0,
-              transition: 'opacity 0.4s ease',
-              textAlign: 'center',
-              fontFamily: "'Space Mono', monospace",
-            }}
-          >
-            <div style={{
-              color: TECH_INFO[selectedTech].color,
-              fontSize: tooltipNameSize,
-              fontWeight: 'bold',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-              marginBottom: '8px',
-              textShadow: [
-                `-1px -1px 0 rgba(255,255,255,0.85)`,
-                ` 1px -1px 0 rgba(255,255,255,0.85)`,
-                `-1px  1px 0 rgba(255,255,255,0.85)`,
-                ` 1px  1px 0 rgba(255,255,255,0.85)`,
-                ` 0 0 16px ${TECH_INFO[selectedTech].color}`,
-                ` 0 0 32px ${TECH_INFO[selectedTech].color}66`,
-              ].join(','),
-            }}>
-              {selectedTech}
-            </div>
-            <div style={{
-              color: '#e2e8f0',
-              fontSize: tooltipKeySize,
-              letterSpacing: '0.08em',
-              textShadow: '0 1px 8px rgba(0,0,0,0.9)',
-            }}>
-              {TECH_INFO[selectedTech].keywords}
-            </div>
-          </div>
-        </div>
-      )}
+      {tooltip}
 
       {/* Content overlay */}
       <div
@@ -115,67 +201,21 @@ const Skills = () => {
         data-aos-anchor="#skills"
         data-aos-duration="400"
       >
-        {/* Title — top right */}
         <div className="flex flex-col items-end pointer-events-auto">
-          <p className="text-xl tracking-widest uppercase text-[#67E8F9] header-text-top">
-            Skills
-          </p>
+          <p className="text-xl tracking-widests uppercase text-[#67E8F9] header-text-top">Skills</p>
           <h2 className="mt-1 text-gray-200 tracking-wide text-2xl md:text-3xl space-mono font-normal skills-top-text-2">
             What I Can Do
           </h2>
         </div>
 
-        {/* Spacer — pushes list to bottom */}
         <div className="flex-1" />
 
-        {/* Tech list — bottom center */}
         <div className="pb-6 flex flex-col items-center pointer-events-auto">
-          <div
-            className="text-sm md:text-xl mb-3 space-mono tracking-wide skills-text text-gray-200"
-          >
+          <div className="text-sm md:text-xl mb-3 space-mono tracking-wide skills-text text-gray-200">
             Experienced with developing in:
           </div>
-          <div
-            className="flex flex-row skill-icons-container"
-          >
-            <div className="flex flex-col mr-4 md:mr-8">
-              <span onClick={() => { spinToAngle(-Math.PI / 4); globeControl.onSelect?.('TypeScript'); }} onMouseEnter={() => { dispatch(actions.typescriptOpacity(2)); dispatch(actions.typescriptScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.typescriptOpacity(0.6)); dispatch(actions.typescriptScale([20,20,20]))}} className={techClass(typescriptHighlight)}>
-                <SiTypescript className="mr-2" color="#3178c6" size={iconSize} />
-                TypeScript
-              </span>
-              <span onClick={() => { spinToAngle(0); globeControl.onSelect?.('React.js'); }} onMouseEnter={() => { dispatch(actions.reactOpacity(2)); dispatch(actions.reactScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.reactOpacity(0.6)); dispatch(actions.reactScale([20,20,20]))}} className={techClass(reactHighlight)}>
-                <SiReact className="mr-2" color="#61dafb" size={iconSize} />
-                React.js
-              </span>
-              <span onClick={() => { spinToAngle(-Math.PI / 2); globeControl.onSelect?.('CSS3'); }} onMouseEnter={() => { dispatch(actions.cssOpacity(2)); dispatch(actions.cssScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.cssOpacity(0.6)); dispatch(actions.cssScale([20,20,20]))}} className={techClass(cssHighlight)}>
-                <SiCss3 className="mr-2" color="#2762e9" size={iconSize} />
-                CSS3
-              </span>
-              <span onClick={() => { spinToAngle(-3 * Math.PI / 4); globeControl.onSelect?.('Javascript'); }} onMouseEnter={() => { dispatch(actions.javascriptOpacity(2)); dispatch(actions.javascriptScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.javascriptOpacity(0.6)); dispatch(actions.javascriptScale([20,20,20]))}} className={techClass(javascriptHighlight)}>
-                <SiJavascript className="mr-2" color="#efd81f" size={iconSize} />
-                JavaScript
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span onClick={() => { spinToAngle(3 * Math.PI / 4); globeControl.onSelect?.('Framer'); }} onMouseEnter={() => { dispatch(actions.framerOpacity(2)); dispatch(actions.framerScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.framerOpacity(0.6)); dispatch(actions.framerScale([20,20,20]))}} className={techClass(framerHighlight)}>
-                <SiFramer className="mr-2" color="#ffffff" size={iconSize} />
-                Framer
-              </span>
-              <span onClick={() => { spinToAngle(Math.PI / 4); globeControl.onSelect?.('Redux'); }} onMouseEnter={() => { dispatch(actions.reduxOpacity(2)); dispatch(actions.reduxScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.reduxOpacity(0.6)); dispatch(actions.reduxScale([20,20,20]))}} className={techClass(reduxHighlight)}>
-                <SiRedux className="mr-2" color="#764abc" size={iconSize} />
-                Redux
-              </span>
-              <span onClick={() => { spinToAngle(Math.PI / 2); globeControl.onSelect?.('Tailwind'); }} onMouseEnter={() => { dispatch(actions.tailwindOpacity(2)); dispatch(actions.tailwindScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.tailwindOpacity(0.6)); dispatch(actions.tailwindScale([20,20,20]))}} className={techClass(tailwindHighlight)}>
-                <SiTailwindcss className="mr-2" color="#44a8b3" size={iconSize} />
-                Tailwind
-              </span>
-              <span onClick={() => { spinToAngle(Math.PI); globeControl.onSelect?.('Node.js'); }} onMouseEnter={() => { dispatch(actions.nodeOpacity(2)); dispatch(actions.nodeScale([23,23,23]))}} onMouseLeave={() => { dispatch(actions.nodeOpacity(0.6)); dispatch(actions.nodeScale([20,20,20]))}} className={techClass(nodeHighlight)}>
-                <SiNodedotjs className="mr-2" color="#43853d" size={iconSize} />
-                Node.js
-              </span>
-            </div>
-          </div>
-          <div className="mt-3 text-xs md:text-sm space-mono tracking-widest text-gray-200 pointer-events-auto">
+          {techList}
+          <div className="mt-3 text-xs md:text-sm space-mono tracking-widest text-gray-200">
             and much more.
           </div>
         </div>

@@ -5,9 +5,9 @@ const ProjectItem = (props) => {
         <div className="group project-item min-w-[100%] mx-auto">
             {props.isNavlink ? (
                 <NavLink to={props.navlink}>
-                    <div className="relative flex items-center p-3 justify-center cursor-pointer shadow-custom2 group-hover:shadow-custom4 group-hover:bg-gradient-to-r from-[#0891B2]/30 via-[#67E8F9]/30 to-[#0891B2]/30 shadow-[#ffffff] rounded-sm h-[80px] md:h-auto md:min-h-[200px] overflow-hidden">
+                    <div className="project-card-inner relative flex items-center p-3 justify-center cursor-pointer shadow-custom2 group-hover:shadow-custom4 group-hover:bg-gradient-to-r from-[#0891B2]/30 via-[#67E8F9]/30 to-[#0891B2]/30 shadow-[#ffffff] rounded-sm h-[80px] md:h-auto md:min-h-[160px] overflow-hidden">
                             <img
-                                className={props.imgClassName || "max-h-[60px] max-w-[250px] md:max-h-[100%] md:max-w-[100%]"}
+                                className={props.imgClassName || "max-h-[50px] max-w-[250px] md:max-h-[100%] md:max-w-[100%]"}
                                 src={props.backgroundImg}
                                 alt="/"
                             />
@@ -19,7 +19,7 @@ const ProjectItem = (props) => {
                     target="_blank"
                     rel="noreferrer"
                 >
-                    <div className="relative flex items-center justify-center cursor-pointer h-auto w-full shadow-custom2 group-hover:shadow-custom4 group-hover:bg-gradient-to-r from-[#0891B2]/30 via-[#67E8F9]/30 to-[#0891B2]/30  shadow-[#ffffff] p-3 py-4 md:py-10 project-item-container rounded-sm">
+                    <div className="project-card-inner relative flex items-center justify-center cursor-pointer h-auto w-full shadow-custom2 group-hover:shadow-custom4 group-hover:bg-gradient-to-r from-[#0891B2]/30 via-[#67E8F9]/30 to-[#0891B2]/30  shadow-[#ffffff] p-3 py-4 md:py-10 project-item-container rounded-sm">
                         <>
                             <img
                                 className=""
