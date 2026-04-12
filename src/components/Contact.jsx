@@ -42,7 +42,7 @@ const Contact = () => {
             setSubmitted('loading');
             emailjs
                 .send(
-                    'service_h4pebiy',
+                    'service_t0ia8qg',
                     'template_osdth1z',
                     values,
                     'yOktMpYjYqpxLX_TI'
