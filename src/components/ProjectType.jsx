@@ -159,7 +159,7 @@ const ProjectType = (props) => {
                                         color="#E5E7EB"
                                         variant="outline"
                                         borderRadius="4px"
-                                        className="flex flex-center text-xl text-center m-auto w-[7rem] ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3"
+                                        className="flex flex-center text-xl text-center m-auto w-[7rem] transition-all duration-200 ease-in send-message-button not-submitted-send-message-button hover:shadow-custom3"
                                         size="lg"
                                     >
                                         Code
@@ -177,7 +177,7 @@ const ProjectType = (props) => {
                                         color="#E5E7EB"
                                         variant="outline"
                                         borderRadius="4px"
-                                        className="flex flex-center ml-2 text-xl text-center m-auto w-[7rem] ease-in duration-100 send-message-button not-submitted-send-message-button hover:shadow-custom3 "
+                                        className="flex flex-center ml-2 text-xl text-center m-auto w-[7rem] transition-all duration-200 ease-in send-message-button not-submitted-send-message-button hover:shadow-custom3"
                                         size="lg"
                                     >
                                         Demo

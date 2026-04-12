@@ -22,10 +22,10 @@ const Contact = () => {
     const [finish, setFinish] = useState(false);
     const [focused, setFocused] = useState(false);
     const styleFocused = finish
-        ? 'w-full shadow-custom2 shadow-[#60f073] p-3 justify-center flex flex-col mx-auto rounded-sm'
-        : 'w-full shadow-custom2 shadow-[#67E8F9] p-3 justify-center flex flex-col mx-auto rounded-sm';
+        ? 'w-full shadow-custom2 shadow-[#60f073] p-3 justify-center flex flex-col mx-auto rounded'
+        : 'w-full shadow-custom2 shadow-[#67E8F9] p-3 justify-center flex flex-col mx-auto rounded';
     const styleUnfocused =
-        'w-full shadow-custom2 shadow-[#ffffff] p-3 justify-center flex flex-col mx-auto rounded-sm';
+        'w-full shadow-custom2 shadow-[#ffffff] p-3 justify-center flex flex-col mx-auto rounded';
 
     const smallMobile = useMediaQuery({ query: '(max-width: 360px)' });
 
