@@ -14,7 +14,6 @@ import {
     Text,
 } from '@chakra-ui/react';
 import ScrollerTop from './ScrollerTop';
-import { useMediaQuery } from 'react-responsive';
 
 const Contact = () => {
     const toast = useToast();
@@ -26,8 +25,6 @@ const Contact = () => {
         : 'w-full shadow-custom2 shadow-[#67E8F9] p-3 justify-center flex flex-col mx-auto rounded';
     const styleUnfocused =
         'w-full shadow-custom2 shadow-[#ffffff] p-3 justify-center flex flex-col mx-auto rounded';
-
-    const smallMobile = useMediaQuery({ query: '(max-width: 360px)' });
 
     const formik = useFormik({
         initialValues: {
