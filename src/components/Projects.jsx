@@ -56,6 +56,7 @@ const Projects = () => {
                             isNavlink={true}
                             backgroundImg={lifecoach}
                             projectUrl="emporium"
+                            imgClassName="max-h-[50px] max-w-[250px] md:max-h-[90px] md:max-w-[100%]"
                         />
                         <ProjectItem
                             title="Emporium"

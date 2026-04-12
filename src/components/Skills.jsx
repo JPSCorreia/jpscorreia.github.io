@@ -156,12 +156,12 @@ const Skills = () => {
 
         {/* Right half — skills list vertically centered */}
         <div
-          className="w-1/2 h-screen flex flex-col items-start justify-center pl-[8%] pr-4 z-10"
+          className="w-1/2 h-screen flex flex-col items-start justify-center pl-[8%] pr-4 z-10 pointer-events-none"
           data-aos="fade-left"
           data-aos-anchor="#skills"
           data-aos-duration="400"
         >
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start pointer-events-auto">
             <div className="text-sm mb-3 space-mono tracking-wide text-gray-200">
               Experienced with developing in:
             </div>
@@ -196,7 +196,8 @@ const Skills = () => {
 
       {/* Content overlay */}
       <div
-        className="relative z-10 w-[90%] max-w-[1240px] mx-auto flex-1 pt-20 flex flex-col pointer-events-none"
+        className="relative z-10 w-[90%] max-w-[1240px] mx-auto flex-1 pt-20 flex flex-col"
+        style={{ pointerEvents: 'none' }}
         data-aos="fade-left"
         data-aos-anchor="#skills"
         data-aos-duration="400"

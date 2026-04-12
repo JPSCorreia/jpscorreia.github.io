@@ -16,7 +16,7 @@ const ScrollerTop = (props) => {
 
   return (
     <div
-      className="page-scroller flex flex-col items-center justify-center bg-transparent cursor-pointer hover:text-[#67E8F9] scroller-top mt-4"
+      className="page-scroller flex flex-col items-center justify-center bg-transparent cursor-pointer hover:text-[#67E8F9] scroller-top mt-2 mb-6"
       onClick={handleScrollTop}
     >
       <MovingText

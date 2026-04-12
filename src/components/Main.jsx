@@ -10,7 +10,7 @@ const Main = () => {
       className="w-[90%] max-w-screen m-auto min-h-screen pt-20 text-center flex home-page flex-col"
     >
       <div className="max-w-[1240px] w-full flex-1 mx-auto flex flex-col justify-center items-center text-zone">
-        <div id="home-container-1" className="flex flex-col main h-[100%] home-intro mt-24 sm:mt-36 justify-center">
+        <div id="home-container-1" className="flex flex-col main h-[100%] home-intro justify-center">
           <div className="flex flex-col">
             <div
               className="text-start text-[#67E8F9] text-lg md:text-2xl whitespace-nowrap space-mono mb-4"

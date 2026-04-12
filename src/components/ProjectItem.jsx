@@ -1,33 +1,67 @@
 import { NavLink } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
+
+const cardProps = {
+    variant: 'unstyled',
+    width: '100%',
+    height: 'auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '4px',
+    padding: '0.75rem',
+    cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden',
+    boxShadow: '0px 2px 8px 2px #ffffff',
+    transition: 'box-shadow 0.2s ease-in',
+    _hover: {
+        boxShadow: '0px 0px 12px 8px #67E8F9',
+    },
+    sx: {
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to right, rgba(8,145,178,0.3), rgba(103,232,249,0.3), rgba(8,145,178,0.3))',
+            opacity: 0,
+            transition: 'opacity 0.2s ease-in',
+            pointerEvents: 'none',
+        },
+        '&:hover::before': {
+            opacity: 1,
+        },
+    },
+};
 
 const ProjectItem = (props) => {
     return (
-        <div className="group project-item min-w-[100%] mx-auto">
+        <div className="project-item min-w-[100%] mx-auto">
             {props.isNavlink ? (
                 <NavLink to={props.navlink}>
-                    <div className="project-card-inner relative flex items-center p-3 justify-center cursor-pointer shadow-custom2 group-hover:shadow-custom4 group-hover:bg-gradient-to-r from-[#0891B2]/30 via-[#67E8F9]/30 to-[#0891B2]/30 shadow-[#ffffff] rounded-sm h-[80px] md:h-auto md:min-h-[160px] overflow-hidden">
-                            <img
-                                className={props.imgClassName || "max-h-[50px] max-w-[250px] md:max-h-[100%] md:max-w-[100%]"}
-                                src={props.backgroundImg}
-                                alt="/"
-                            />
-                    </div>
+                    <Button
+                        {...cardProps}
+                        minH={{ base: '70px', md: '120px' }}
+                        overflow="hidden"
+                        className="project-card-inner"
+                    >
+                        <img
+                            className={props.imgClassName || "max-h-[50px] max-w-[250px] md:max-h-[100%] md:max-w-[100%]"}
+                            style={{ position: 'relative', zIndex: 1 }}
+                            src={props.backgroundImg}
+                            alt="/"
+                        />
+                    </Button>
                 </NavLink>
             ) : (
-                <a
-                    href="https://github.com/JPSCorreia"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <div className="project-card-inner relative flex items-center justify-center cursor-pointer h-auto w-full shadow-custom2 group-hover:shadow-custom4 group-hover:bg-gradient-to-r from-[#0891B2]/30 via-[#67E8F9]/30 to-[#0891B2]/30  shadow-[#ffffff] p-3 py-4 md:py-10 project-item-container rounded-sm">
-                        <>
-                            <img
-                                className=""
-                                src={props.backgroundImg}
-                                alt="/"
-                            />
-                        </>
-                    </div>
+                <a href="https://github.com/JPSCorreia" target="_blank" rel="noreferrer">
+                    <Button
+                        {...cardProps}
+                        py={{ base: '1rem', md: '2.5rem' }}
+                        className="project-card-inner"
+                    >
+                        <img src={props.backgroundImg} alt="/" style={{ position: 'relative', zIndex: 1 }} />
+                    </Button>
                 </a>
             )}
         </div>
